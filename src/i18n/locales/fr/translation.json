@@ -1,0 +1,525 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "about": "À Propos",
+    "contact": "Contact",
+    "bookAppointment": "Prendre Rendez-vous",
+    "companyName": "Alpha Conseil"
+  },
+  "hero": {
+    "slides": [
+      {
+        "badge": "CABINET DE CONSEIL À BANGUI",
+        "title": "Votre partenaire stratégique pour la réussite de vos projets en Centrafrique",
+        "titleHighlight": "Centrafrique",
+        "description": "Alpha Conseil vous accompagne dans la formalisation de votre entreprise, l'élaboration de vos business plans et vous offre un conseil juridique sur mesure."
+      },
+      {
+        "badge": "EXPERTISE EN BUSINESS PLAN",
+        "title": "Transformez votre vision en un business plan solide et convaincant",
+        "titleHighlight": "business plan",
+        "description": "Nous vous aidons à structurer votre projet, à convaincre les investisseurs et à décrocher les financements nécessaires avec des prévisions financières robustes et une stratégie claire."
+      },
+      {
+        "badge": "SÉCURISATION JURIDIQUE",
+        "title": "Sécurisez vos activités avec un conseil juridique d'excellence",
+        "titleHighlight": "conseil juridique",
+        "description": "Protégez vos intérêts avec notre expertise en droit des affaires, droit du travail et fiscalité centrafricaine. Nous anticipons les risques pour vous permettre d'entreprendre sereinement."
+      },
+      {
+        "badge": "ACCOMPAGNEMENT SUR MESURE",
+        "title": "Un accompagnement personnalisé pour chaque étape de votre projet",
+        "titleHighlight": "accompagnement",
+        "description": "Que vous soyez entrepreneur individuel, PME ou investisseur international, nous adaptons nos services à vos besoins spécifiques pour garantir votre réussite en RCA."
+      }
+    ],
+    "cta": {
+      "discoverServices": "Découvrir nos services",
+      "contactUs": "Nous contacter"
+    }
+  },
+  "services": {
+    "badge": "Nos Domaines d'Expertise",
+    "title": "Des solutions adaptées à vos besoins",
+    "description": "Alpha Conseil met à votre disposition une équipe d'experts dédiés pour vous accompagner à chaque étape du développement de votre activité.",
+    "items": [
+      {
+        "title": "Formalisation d'Entreprises",
+        "description": "Nous vous accompagnons dans toutes les démarches administratives pour créer et enregistrer légalement votre entreprise en République Centrafricaine. De la rédaction des statuts à l'obtention du RCCM."
+      },
+      {
+        "title": "Business Plan",
+        "description": "Élaboration de plans d'affaires solides et réalistes pour structurer votre projet, convaincre les investisseurs et obtenir des financements auprès des banques et institutions financières."
+      },
+      {
+        "title": "Conseil Juridique",
+        "description": "Assistance et conseils en droit des affaires, droit du travail et fiscalité. Nous sécurisons vos contrats et vous aidons à naviguer dans l'environnement juridique centrafricain en toute sérénité."
+      }
+    ]
+  },
+  "about": {
+    "badge": "À Propos de Nous",
+    "title": "L'excellence au service de votre ambition",
+    "description": "Basé à Bangui, Alpha Conseil est né de la volonté d'offrir aux entrepreneurs et investisseurs en République Centrafricaine un accompagnement de standard international. Nous comprenons les défis locaux et vous apportons des solutions concrètes pour sécuriser et pérenniser vos investissements.",
+    "benefits": [
+      "Expertise locale approfondie du marché centrafricain",
+      "Accompagnement personnalisé et sur-mesure",
+      "Réseau de partenaires solides à Bangui",
+      "Confidentialité et rigueur professionnelle"
+    ],
+    "cta": "Discuter de votre projet",
+    "experience": {
+      "label": "Années d'expérience",
+      "extra": "cumulée"
+    }
+  },
+  "whyChooseUs": {
+    "badge": "Pourquoi nous choisir",
+    "title": "La confiance de nos clients, notre meilleure référence",
+    "description": "Découvrez ce qui fait d'Alpha Conseil le partenaire privilégié des entrepreneurs et investisseurs en République Centrafricaine.",
+    "reasons": [
+      {
+        "title": "Expertise locale reconnue",
+        "description": "Une connaissance approfondie du tissu administratif, juridique et économique centrafricain, acquise auprès de centaines de clients accompagnés avec succès."
+      },
+      {
+        "title": "Accompagnement personnalisé",
+        "description": "Chaque projet est unique. Nous vous offrons un suivi sur-mesure avec un interlocuteur dédié tout au long de votre accompagnement."
+      },
+      {
+        "title": "Rapidité d'exécution",
+        "description": "Nous respectons vos délais. Grâce à notre maîtrise des processus administratifs, nous traitons vos dossiers en un temps record sans compromis sur la qualité."
+      },
+      {
+        "title": "Confidentialité & Sérieux",
+        "description": "La discrétion et la rigueur sont au cœur de notre métier. Vos informations sensibles sont traitées avec la plus stricte confidentialité."
+      },
+      {
+        "title": "Réseau & Partenaires",
+        "description": "Nous disposons d'un solide réseau de partenaires (banques, notaires, avocats, administrations) pour vous ouvrir les bonnes portes rapidement."
+      },
+      {
+        "title": "Support WhatsApp prioritaire",
+        "description": "Nos clients bénéficient d'un accès direct à leur conseiller via WhatsApp pour un suivi réactif et des réponses rapides à toutes vos questions."
+      }
+    ],
+    "banner": {
+      "title": "Prêt à travailler avec nous ?",
+      "description": "Contactez-nous dès maintenant pour discuter de votre projet sans aucun engagement. Notre équipe vous répond sous 24h.",
+      "phone": "+236 72 15 32 55",
+      "whatsapp": "WhatsApp",
+      "writeUs": "Nous écrire",
+      "footer": "Disponible 7j/7 • Réponse garantie sous 24h • Premier échange gratuit"
+    }
+  },
+  "testimonials": {
+    "badge": "Témoignages",
+    "title": "Ce que disent nos clients",
+    "description": "La satisfaction de nos clients est notre meilleure fierté. Découvrez leurs retours d'expérience.",
+    "items": [
+      {
+        "name": "Christiane M.",
+        "role": "Cadre de retour à Bangui depuis Paris",
+        "quote": "Alpha Conseil m'a accompagnée dans la création de mon cabinet conseil à Bangui. Leur connaissance du tissu administratif local m'a fait gagner un temps précieux. En deux semaines, j'avais mon RCCM et tous mes documents en règle."
+      },
+      {
+        "name": "Arsène B.",
+        "role": "Propriétaire, Bangui",
+        "quote": "J'ai confié à Alpha Conseil la rédaction de mon business plan pour un projet de parc agro-pastoral. Le document était si solide qu'il a convaincu ma banque dès la première présentation. Un professionnalisme rare à Bangui."
+      },
+      {
+        "name": "Famille Nguéssé",
+        "role": "Investisseurs, Bangui",
+        "quote": "Nous avions des inquiétudes sur les aspects juridiques de notre investissement immobilier. Alpha Conseil a sécurisé chaque contrat et nous a évité des pièges que nous n'aurions pas vus seuls. Un accompagnement indispensable."
+      },
+      {
+        "name": "Olivier M.",
+        "role": "Primo-accédant, Bangui",
+        "quote": "Première création d'entreprise pour moi. L'équipe d'Alpha Conseil a été d'une patience et d'une clarté remarquables. Chaque étape a été expliquée, chaque document rédigé avec soin. Je recommande vivement."
+      },
+      {
+        "name": "Sophie K.",
+        "role": "Directrice d'ONG, Bangui",
+        "quote": "Alpha Conseil nous aide pour la conformité juridique de notre ONG depuis deux ans. Leur réactivité et leur expertise en droit centrafricain sont irréprochables. Un partenaire fiable sur lequel on peut compter."
+      },
+      {
+        "name": "Jean-Pierre L.",
+        "role": "Entrepreneur, Bangui",
+        "quote": "J'avais un contentieux fiscal qui traînait depuis des mois. Alpha Conseil a pris le dossier en main et a trouvé une solution négociée en moins d'un mois. Leur réseau local et leur approche pragmatique font la différence."
+      }
+    ],
+    "cta": {
+      "text": "Rejoignez nos clients satisfaits et donnez vie à vos projets.",
+      "button": "Contactez-nous"
+    },
+    "controls": {
+      "prev": "Témoignage précédent",
+      "next": "Témoignage suivant"
+    }
+  },
+  "pricing": {
+    "badge": "Nos Tarifs",
+    "title": "Des prestations adaptées à chaque projet",
+    "description": "Tous nos packs incluent un accompagnement personnalisé et un suivi dédié jusqu'à la complète satisfaction de nos clients.",
+    "viewCards": "Cartes",
+    "viewCompare": "Comparateur",
+    "plans": [
+      {
+        "name": "Formalisation",
+        "subtitle": "Création d'entreprise",
+        "description": "Pack complet pour créer et enregistrer votre entreprise en RCA.",
+        "features": [
+          "Rédaction des statuts",
+          "Dépôt du RCCM",
+          "Immatriculation fiscale",
+          "Ouverture de compte banque conseillée",
+          "Assistance administrative complète",
+          "Suivi jusqu'à l'obtention des documents"
+        ],
+        "forWho": "Entrepreneurs individuels, auto-entrepreneurs et PME souhaitant créer ou régulariser leur entreprise en RCA.",
+        "details": [
+          {
+            "title": "Documents fournis",
+            "items": [
+              "Statuts notariés",
+              "Registre du Commerce (RCCM)",
+              "Carte d'Immatriculation Fiscale",
+              "Dossier d'ouverture de compte"
+            ]
+          },
+          {
+            "title": "Délais de traitement",
+            "items": [
+              "Phase administrative : 3 à 5 jours",
+              "Obtention des documents : 1 à 2 semaines",
+              "Suivi prioritaire possible sur demande"
+            ]
+          },
+          {
+            "title": "Accompagnement",
+            "items": [
+              "Interlocuteur dédié",
+              "Suivi WhatsApp disponible",
+              "Relance automatique des administrations"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Business Plan",
+        "subtitle": "Stratégie & Financement",
+        "description": "Un business plan solide pour convaincre investisseurs et banques.",
+        "features": [
+          "Analyse de marché détaillée",
+          "Prévisions financières sur 3 ans",
+          "Stratégie commerciale",
+          "Présentation investisseurs",
+          "Accompagnement bancaire",
+          "Révisions illimitées pendant 1 mois"
+        ],
+        "forWho": "Porteurs de projet, start-ups et PME à la recherche de financements ou d'investisseurs.",
+        "details": [
+          {
+            "title": "Études & Analyses",
+            "items": [
+              "Analyse approfondie du marché centrafricain",
+              "Étude de la concurrence",
+              "Analyse SWOT détaillée",
+              "Positionnement stratégique"
+            ]
+          },
+          {
+            "title": "Livrables",
+            "items": [
+              "Business Plan complet (30-50 pages)",
+              "Prévisions financières sur 3 ans",
+              "Pitch deck investisseurs",
+              "Executive summary"
+            ]
+          },
+          {
+            "title": "Garanties",
+            "items": [
+              "Révisions illimitées pendant 1 mois",
+              "Accompagnement bancaire inclus",
+              "Simulation d'obtention de prêt",
+              "Support post-financement"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Conseil Juridique",
+        "subtitle": "Sécurisation & Conformité",
+        "description": "Audit et conseil juridique pour sécuriser vos activités.",
+        "features": [
+          "Audit juridique complet",
+          "Rédaction et révision de contrats",
+          "Conseil en droit du travail",
+          "Assistance fiscale",
+          "Conformité réglementaire",
+          "Suivi personnalisé"
+        ],
+        "forWho": "Entreprises, ONG et investisseurs ayant besoin de sécuriser leurs activités juridiques en RCA.",
+        "details": [
+          {
+            "title": "Périmètre couvert",
+            "items": [
+              "Droit des affaires (OHADA)",
+              "Droit du travail centrafricain",
+              "Droit fiscal et douanier",
+              "Droit des contrats"
+            ]
+          },
+          {
+            "title": "Prestations incluses",
+            "items": [
+              "Audit juridique complet de votre structure",
+              "Rédaction et révision de contrats",
+              "Assistance contentieux",
+              "Veille réglementaire trimestrielle"
+            ]
+          },
+          {
+            "title": "Délais & Urgences",
+            "items": [
+              "Prise en charge sous 24h",
+              "Traitement des urgences en 48h",
+              "Suivi mensuel pour les abonnés"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Sur Mesure",
+        "subtitle": "Projet personnalisé",
+        "description": "Une solution entièrement personnalisée pour les projets complexes ou de grande envergure.",
+        "features": [
+          "Audit complet de vos besoins",
+          "Stratégie sur-mesure",
+          "Accompagnement dédié 7j/7",
+          "Gestion de A à Z",
+          "Suivi prioritaire",
+          "Support illimité pendant le projet"
+        ],
+        "forWho": "Grands comptes, investisseurs internationaux et projets transverses nécessitant une expertise pluridisciplinaire.",
+        "details": [
+          {
+            "title": "Prestations à la carte",
+            "items": [
+              "Audit global de votre projet",
+              "Stratégie de développement",
+              "Accompagnement réglementaire complet",
+              "Gestion de projet externalisée"
+            ]
+          },
+          {
+            "title": "Secteurs couverts",
+            "items": [
+              "Agro-industrie",
+              "Immobilier et construction",
+              "Commerce et distribution",
+              "Services et technologies"
+            ]
+          },
+          {
+            "title": "Engagements",
+            "items": [
+              "Interlocuteur unique dédié",
+              "Disponibilité 7j/7",
+              "Reporting hebdomadaire",
+              "Confidentialité totale"
+            ]
+          }
+        ]
+      }
+    ],
+    "badgeLabels": {
+      "popular": "⭐ Le plus populaire",
+      "custom": "🚀 Sur devis"
+    },
+    "modal": {
+      "forWho": "À qui s'adresse ce pack ?",
+      "requestQuote": "Demander un devis",
+      "close": "Fermer",
+      "viewDetails": "Voir les détails →"
+    },
+    "compare": {
+      "criteria": "Critères",
+      "sections": [
+        {
+          "category": "💰 Prix & Délais",
+          "rows": [
+            { "label": "Prix", "values": ["250 000 FCFA", "350 000 FCFA", "200 000 FCFA", "Sur devis"] },
+            { "label": "Délais d'exécution", "values": ["1 à 2 sem.", "2 à 3 sem.", "48h à 1 sem.", "Selon projet"] }
+          ]
+        },
+        {
+          "category": "📋 Formalités administratives",
+          "rows": [
+            { "label": "Rédaction des statuts", "values": [true, false, true, true] },
+            { "label": "Dépôt du RCCM", "values": [true, false, false, true] },
+            { "label": "Immatriculation fiscale", "values": [true, false, false, true] },
+            { "label": "Ouverture de compte conseillée", "values": [true, false, false, true] }
+          ]
+        },
+        {
+          "category": "📊 Stratégie & Finance",
+          "rows": [
+            { "label": "Analyse de marché", "values": [false, true, false, true] },
+            { "label": "Prévisions financières 3 ans", "values": [false, true, false, true] },
+            { "label": "Stratégie commerciale", "values": [false, true, false, true] },
+            { "label": "Présentation investisseurs", "values": [false, true, false, true] },
+            { "label": "Accompagnement bancaire", "values": [true, true, false, true] }
+          ]
+        },
+        {
+          "category": "⚖️ Conseil Juridique",
+          "rows": [
+            { "label": "Audit juridique complet", "values": [false, false, true, true] },
+            { "label": "Rédaction & révision de contrats", "values": [false, false, true, true] },
+            { "label": "Conseil en droit du travail", "values": [false, false, true, true] },
+            { "label": "Assistance fiscale", "values": [false, false, true, true] },
+            { "label": "Conformité réglementaire", "values": [true, false, true, true] }
+          ]
+        },
+        {
+          "category": "🛎️ Accompagnement",
+          "rows": [
+            { "label": "Suivi personnalisé", "values": [true, true, true, true] },
+            { "label": "Support après projet", "values": ["1 mois", "1 mois", "1 mois", "Illimité"] },
+            { "label": "Accompagnement dédié 7j/7", "values": [false, false, false, true] },
+            { "label": "Révisions illimitées", "values": [false, true, false, true] }
+          ]
+        }
+      ]
+    },
+    "footer": {
+      "text": "Tarifs indicatifs — un devis personnalisé vous sera établi après étude de votre projet.",
+      "link": "Contactez-nous",
+      "forEstimate": "pour une estimation gratuite."
+    },
+    "cta": "Demander un devis",
+    "freeQuote": "Sur devis"
+  },
+  "contact": {
+    "badge": "Contactez-nous",
+    "title": "Prêt à démarrer votre projet ?",
+    "description": "Notre équipe est à votre disposition pour répondre à vos questions et vous accompagner dans vos démarches.",
+    "infoTitle": "Informations de contact",
+    "office": {
+      "title": "Notre Bureau",
+      "address": "Centre-ville, Avenue Boganda",
+      "city": "Bangui, République Centrafricaine"
+    },
+    "phone": {
+      "title": "Téléphone / WhatsApp",
+      "number": "+236 72 15 32 55"
+    },
+    "email": {
+      "title": "Email",
+      "address1": "contact@alphaconseil-rca.com",
+      "address2": "direction@alphaconseil-rca.com"
+    },
+    "hours": {
+      "title": "Heures d'ouverture",
+      "weekdays": "Lundi - Vendredi",
+      "weekdaysHours": "08:00 - 17:00",
+      "saturday": "Samedi",
+      "saturdayHours": "09:00 - 13:00",
+      "sunday": "Dimanche",
+      "sundayHours": "Fermé"
+    },
+    "form": {
+      "firstName": "Prénom",
+      "firstNamePlaceholder": "Jean",
+      "lastName": "Nom",
+      "lastNamePlaceholder": "Dupont",
+      "email": "Email",
+      "emailPlaceholder": "jean.dupont@exemple.com",
+      "service": "Service souhaité",
+      "serviceOptions": [
+        "Formalisation d'entreprise",
+        "Business Plan",
+        "Conseil Juridique",
+        "Autre demande"
+      ],
+      "message": "Message",
+      "messagePlaceholder": "Décrivez brièvement votre projet ou votre besoin...",
+      "submit": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé !"
+    }
+  },
+  "chatbot": {
+    "welcome": "👋 Bonjour ! Je suis l'assistant virtuel d'Alpha Conseil. Comment puis-je vous aider ? Posez-moi une question ou choisissez parmi les suggestions ci-dessous.",
+    "header": "Alpha Conseil",
+    "subheader": "Assistant virtuel",
+    "inputPlaceholder": "Écrivez votre message...",
+    "inputPlaceholderForm": "Répondez au formulaire ci-dessus...",
+    "faqs": [
+      {
+        "question": "Quels sont vos services ?",
+        "answer": "Alpha Conseil propose trois principaux services :\n\n1️⃣ **Formalisation d'Entreprises** — Création et enregistrement légal de votre entreprise en RCA (RCCM, statuts, immatriculation fiscale).\n\n2️⃣ **Business Plan** — Élaboration de plans d'affaires solides pour convaincre investisseurs et banques.\n\n3️⃣ **Conseil Juridique** — Assistance en droit des affaires, contrats, fiscalité et droit du travail.\n\nSouhaitez-vous plus de détails sur l'un de ces services ?"
+      },
+      {
+        "question": "Combien coûtent vos prestations ?",
+        "answer": "Nos tarifs varient selon le service :\n\n• **Formalisation** : à partir de 250 000 FCFA\n• **Business Plan** : à partir de 350 000 FCFA\n• **Conseil Juridique** : à partir de 200 000 FCFA\n\nCe sont des tarifs indicatifs. Un devis personnalisé gratuit vous sera établi après étude de votre projet. Contactez-nous pour en discuter !"
+      },
+      {
+        "question": "Où êtes-vous situés ?",
+        "answer": "Nous sommes basés à **Bangui**, en République Centrafricaine. Nous accompagnons aussi bien les clients locaux que les investisseurs internationaux souhaitant s'implanter en RCA."
+      },
+      {
+        "question": "Comment vous contacter ?",
+        "answer": "Vous pouvez nous contacter par :\n\n📞 **Téléphone** : (+236) 75 29 89 84 / 72 35 66 76\n📧 **Email** : contact@alphaconseil.com\n💬 **WhatsApp** : +236 75 29 89 84\n\nOu remplir le formulaire de contact sur notre site — nous vous répondons sous 24h."
+      },
+      {
+        "question": "Quels sont les délais ?",
+        "answer": "Les délais varient selon le service :\n\n• **Formalisation d'entreprise** : 1 à 2 semaines en moyenne\n• **Business Plan** : 2 à 3 semaines selon la complexité\n• **Conseil Juridique** : sous 48h pour les urgences\n\nNous nous engageons à vous tenir informé à chaque étape."
+      },
+      {
+        "question": "Qui est Alpha Conseil ?",
+        "answer": "Alpha Conseil est un cabinet de conseil basé à Bangui, né de la volonté d'offrir aux entrepreneurs et investisseurs en RCA un accompagnement de standard international.\n\nNotre équipe cumule plus de 10 ans d'expérience dans l'accompagnement d'entreprises en Centrafrique. Nous allions expertise locale et rigueur professionnelle pour sécuriser et pérenniser vos projets."
+      }
+    ],
+    "quickReplies": [
+      "Quels sont vos services ?",
+      "Combien coûtent vos prestations ?",
+      "Où êtes-vous situés ?",
+      "Comment vous contacter ?"
+    ],
+    "noAnswer": "Je n'ai pas trouvé de réponse à votre question. Vous pouvez laisser vos coordonnées ci-dessous pour que notre équipe vous réponde directement par email.",
+    "form": {
+      "name": "Votre nom *",
+      "email": "Votre email *",
+      "phone": "Votre téléphone (optionnel)",
+      "send": "Envoyer",
+      "cancel": "Annuler",
+      "sending": "Envoi...",
+      "success": "Message envoyé avec succès !"
+    },
+    "formSuccess": "✅ Merci ! Votre message a bien été transmis à notre équipe. Nous vous répondrons dans les plus brefs délais.",
+    "formCancel": "Pas de problème. Vous pouvez également nous contacter par téléphone au **(+236) 75 29 89 84** ou via le formulaire de contact sur notre site.",
+    "error": {
+      "general": "Une erreur est survenue. Veuillez réessayer ou nous contacter directement.",
+      "connection": "Problème de connexion. Veuillez réessayer."
+    }
+  },
+  "footer": {
+    "description": "Votre partenaire de confiance pour la création d'entreprise, le conseil juridique et l'élaboration de business plans à Bangui, RCA.",
+    "quickLinks": "Liens Rapides",
+    "services": "Services",
+    "serviceItems": ["Formalisation", "Business Plan", "Conseil Juridique", "Accompagnement"],
+    "legal": {
+      "notice": "Mentions légales",
+      "privacy": "Politique de confidentialité"
+    },
+    "copyright": "Alpha Conseil RCA. Tous droits réservés."
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English"
+  }
+}

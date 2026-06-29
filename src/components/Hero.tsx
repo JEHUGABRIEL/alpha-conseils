@@ -1,47 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
-const slides = [
-  {
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80',
-    alt: 'Bureau professionnel élégant',
-    badge: 'CABINET DE CONSEIL À BANGUI',
-    title: 'Votre partenaire stratégique pour la réussite de vos projets en Centrafrique',
-    titleHighlight: 'Centrafrique',
-    description:
-      "Alpha Conseil vous accompagne dans la formalisation de votre entreprise, l'élaboration de vos business plans et vous offre un conseil juridique sur mesure.",
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-    alt: 'Consultation d\'affaires',
-    badge: 'EXPERTISE EN BUSINESS PLAN',
-    title: 'Transformez votre vision en un business plan solide et convaincant',
-    titleHighlight: 'business plan',
-    description:
-      "Nous vous aidons à structurer votre projet, à convaincre les investisseurs et à décrocher les financements nécessaires avec des prévisions financières robustes et une stratégie claire.",
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80',
-    alt: 'Équipe en réunion',
-    badge: 'SÉCURISATION JURIDIQUE',
-    title: 'Sécurisez vos activités avec un conseil juridique d\'excellence',
-    titleHighlight: 'conseil juridique',
-    description:
-      "Protégez vos intérêts avec notre expertise en droit des affaires, droit du travail et fiscalité centrafricaine. Nous anticipons les risques pour vous permettre d'entreprendre sereinement.",
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2011&q=80',
-    alt: 'Analyse financière',
-    badge: 'ACCOMPAGNEMENT SUR MESURE',
-    title: 'Un accompagnement personnalisé pour chaque étape de votre projet',
-    titleHighlight: 'accompagnement',
-    description:
-      "Que vous soyez entrepreneur individuel, PME ou investisseur international, nous adaptons nos services à vos besoins spécifiques pour garantir votre réussite en RCA.",
-  },
-];
-
-function renderTitle(slide: (typeof slides)[number]) {
+function renderTitle(slide: { title: string; titleHighlight: string }) {
   if (!slide.title.includes(slide.titleHighlight)) {
     return slide.title;
   }
@@ -56,6 +18,14 @@ function renderTitle(slide: (typeof slides)[number]) {
 }
 
 export function Hero() {
+  const { t } = useTranslation();
+  const slides = t('hero.slides', { returnObjects: true }) as Array<{
+    badge: string;
+    title: string;
+    titleHighlight: string;
+    description: string;
+  }>;
+
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -63,7 +33,7 @@ export function Hero() {
   const advance = useCallback(() => {
     setDirection(1);
     setCurrent((prev) => (prev + 1) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   const startTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -85,6 +55,13 @@ export function Hero() {
     },
     [current, startTimer],
   );
+
+  const images = [
+    'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80',
+    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    'https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80',
+    'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2011&q=80',
+  ];
 
   const variants = {
     enter: (dir: number) => ({
@@ -109,7 +86,6 @@ export function Hero() {
       id="accueil"
       className="relative min-h-screen flex items-center pt-20 overflow-hidden"
     >
-      {/* Slides arrière-plan avec transition */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence custom={direction} mode="popLayout">
           <motion.div
@@ -123,19 +99,17 @@ export function Hero() {
             className="absolute inset-0"
           >
             <img
-              src={slides[current].image}
-              alt={slides[current].alt}
+              src={images[current]}
+              alt={slides[current]?.badge || ''}
               className="w-full h-full object-cover"
             />
           </motion.div>
         </AnimatePresence>
 
-        {/* Overlays fixes par-dessus les slides */}
         <div className="absolute inset-0 bg-blue-950/70 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/20 to-transparent" />
       </div>
 
-      {/* Contenu texte */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl">
           <motion.div
@@ -145,7 +119,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <span className="inline-block py-1 px-3 rounded-full bg-amber-500/20 text-amber-400 text-sm font-semibold tracking-wider mb-6 border border-amber-500/30">
-              {slides[current].badge}
+              {slides[current]?.badge}
             </span>
           </motion.div>
 
@@ -156,7 +130,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
           >
-            {renderTitle(slides[current])}
+            {slides[current] && renderTitle(slides[current])}
           </motion.h1>
 
           <motion.p
@@ -166,7 +140,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed"
           >
-            {slides[current].description}
+            {slides[current]?.description}
           </motion.p>
 
           <motion.div
@@ -180,20 +154,19 @@ export function Hero() {
               href="#services"
               className="inline-flex justify-center items-center px-8 py-4 text-base font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 transition-colors"
             >
-              Découvrir nos services
+              {t('hero.cta.discoverServices')}
             </a>
             <a
               href="#contact"
               className="inline-flex justify-center items-center px-8 py-4 text-base font-medium rounded-md text-white border border-white/30 hover:bg-white/10 transition-colors group"
             >
-              Nous contacter
+              {t('hero.cta.contactUs')}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </motion.div>
         </div>
       </div>
 
-      {/* Indicateurs de slide (dots) */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5">
         {slides.map((_, index) => (
           <button

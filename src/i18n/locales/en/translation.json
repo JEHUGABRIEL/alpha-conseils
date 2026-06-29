@@ -1,0 +1,525 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "contact": "Contact",
+    "bookAppointment": "Book an Appointment",
+    "companyName": "Alpha Conseil"
+  },
+  "hero": {
+    "slides": [
+      {
+        "badge": "CONSULTING FIRM IN BANGUI",
+        "title": "Your strategic partner for the success of your projects in Central Africa",
+        "titleHighlight": "Central Africa",
+        "description": "Alpha Conseil supports you in formalizing your business, developing your business plans, and providing tailored legal advice."
+      },
+      {
+        "badge": "BUSINESS PLAN EXPERTISE",
+        "title": "Transform your vision into a solid and convincing business plan",
+        "titleHighlight": "business plan",
+        "description": "We help you structure your project, convince investors, and secure the necessary funding with robust financial forecasts and a clear strategy."
+      },
+      {
+        "badge": "LEGAL SECURITY",
+        "title": "Secure your activities with excellence in legal advice",
+        "titleHighlight": "legal advice",
+        "description": "Protect your interests with our expertise in business law, labor law, and Central African taxation. We anticipate risks so you can undertake with confidence."
+      },
+      {
+        "badge": "TAILORED SUPPORT",
+        "title": "Personalized support for every step of your project",
+        "titleHighlight": "support",
+        "description": "Whether you are a sole entrepreneur, SME, or international investor, we adapt our services to your specific needs to guarantee your success in CAR."
+      }
+    ],
+    "cta": {
+      "discoverServices": "Discover our services",
+      "contactUs": "Contact us"
+    }
+  },
+  "services": {
+    "badge": "Our Areas of Expertise",
+    "title": "Solutions adapted to your needs",
+    "description": "Alpha Conseil provides a dedicated team of experts to support you at every stage of your business development.",
+    "items": [
+      {
+        "title": "Business Formalization",
+        "description": "We assist you with all administrative procedures to legally create and register your company in the Central African Republic. From drafting statutes to obtaining the RCCM."
+      },
+      {
+        "title": "Business Plan",
+        "description": "Development of solid and realistic business plans to structure your project, convince investors, and obtain financing from banks and financial institutions."
+      },
+      {
+        "title": "Legal Advice",
+        "description": "Assistance and advice in business law, labor law, and taxation. We secure your contracts and help you navigate the Central African legal environment with complete peace of mind."
+      }
+    ]
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "Excellence at the service of your ambition",
+    "description": "Based in Bangui, Alpha Conseil was born from the desire to offer entrepreneurs and investors in the Central African Republic international-standard support. We understand local challenges and provide concrete solutions to secure and sustain your investments.",
+    "benefits": [
+      "In-depth local expertise of the Central African market",
+      "Personalized and tailored support",
+      "Strong network of partners in Bangui",
+      "Confidentiality and professional rigor"
+    ],
+    "cta": "Discuss your project",
+    "experience": {
+      "label": "Years of experience",
+      "extra": "combined"
+    }
+  },
+  "whyChooseUs": {
+    "badge": "Why Choose Us",
+    "title": "Our clients' trust, our best reference",
+    "description": "Discover what makes Alpha Conseil the preferred partner for entrepreneurs and investors in the Central African Republic.",
+    "reasons": [
+      {
+        "title": "Recognized local expertise",
+        "description": "In-depth knowledge of the Central African administrative, legal, and economic landscape, acquired through hundreds of successfully supported clients."
+      },
+      {
+        "title": "Personalized support",
+        "description": "Every project is unique. We offer tailor-made follow-up with a dedicated contact throughout your journey."
+      },
+      {
+        "title": "Speed of execution",
+        "description": "We meet your deadlines. Thanks to our mastery of administrative processes, we handle your files in record time without compromising on quality."
+      },
+      {
+        "title": "Confidentiality & Professionalism",
+        "description": "Discretion and rigor are at the heart of our business. Your sensitive information is handled with the strictest confidentiality."
+      },
+      {
+        "title": "Network & Partners",
+        "description": "We have a strong network of partners (banks, notaries, lawyers, administrations) to open the right doors for you quickly."
+      },
+      {
+        "title": "Priority WhatsApp Support",
+        "description": "Our clients benefit from direct access to their advisor via WhatsApp for responsive follow-up and quick answers to all your questions."
+      }
+    ],
+    "banner": {
+      "title": "Ready to work with us?",
+      "description": "Contact us now to discuss your project with no obligation. Our team will get back to you within 24 hours.",
+      "phone": "+236 72 15 32 55",
+      "whatsapp": "WhatsApp",
+      "writeUs": "Write to us",
+      "footer": "Available 7/7 • Guaranteed response within 24h • Free initial consultation"
+    }
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "What our clients say",
+    "description": "Our clients' satisfaction is our greatest pride. Discover their feedback.",
+    "items": [
+      {
+        "name": "Christiane M.",
+        "role": "Executive returning to Bangui from Paris",
+        "quote": "Alpha Conseil supported me in setting up my consulting firm in Bangui. Their knowledge of the local administrative landscape saved me valuable time. In two weeks, I had my RCCM and all my documents in order."
+      },
+      {
+        "name": "Arsène B.",
+        "role": "Business Owner, Bangui",
+        "quote": "I entrusted Alpha Conseil with writing my business plan for an agro-pastoral park project. The document was so solid that it convinced my bank on the first presentation. Rare professionalism in Bangui."
+      },
+      {
+        "name": "Nguéssé Family",
+        "role": "Investors, Bangui",
+        "quote": "We had concerns about the legal aspects of our real estate investment. Alpha Conseil secured every contract and saved us from pitfalls we wouldn't have seen alone. Indispensable support."
+      },
+      {
+        "name": "Olivier M.",
+        "role": "First-time entrepreneur, Bangui",
+        "quote": "First business creation for me. The Alpha Conseil team was remarkably patient and clear. Every step was explained, every document carefully drafted. I highly recommend them."
+      },
+      {
+        "name": "Sophie K.",
+        "role": "NGO Director, Bangui",
+        "quote": "Alpha Conseil has been helping us with our NGO's legal compliance for two years. Their responsiveness and expertise in Central African law are impeccable. A reliable partner you can count on."
+      },
+      {
+        "name": "Jean-Pierre L.",
+        "role": "Entrepreneur, Bangui",
+        "quote": "I had a tax dispute that had been dragging on for months. Alpha Conseil took over the case and found a negotiated solution in less than a month. Their local network and pragmatic approach make the difference."
+      }
+    ],
+    "cta": {
+      "text": "Join our satisfied clients and bring your projects to life.",
+      "button": "Contact us"
+    },
+    "controls": {
+      "prev": "Previous testimonial",
+      "next": "Next testimonial"
+    }
+  },
+  "pricing": {
+    "badge": "Our Prices",
+    "title": "Services adapted to every project",
+    "description": "All our packages include personalized support and dedicated follow-up until our clients' complete satisfaction.",
+    "viewCards": "Cards",
+    "viewCompare": "Compare",
+    "plans": [
+      {
+        "name": "Formalization",
+        "subtitle": "Business Creation",
+        "description": "Complete package to create and register your company in CAR.",
+        "features": [
+          "Drafting of statutes",
+          "RCCM registration",
+          "Tax registration",
+          "Recommended bank account opening",
+          "Complete administrative assistance",
+          "Follow-up until document obtainment"
+        ],
+        "forWho": "Individual entrepreneurs, self-employed, and SMEs wishing to create or regularize their company in CAR.",
+        "details": [
+          {
+            "title": "Documents Provided",
+            "items": [
+              "Notarized statutes",
+              "Trade Register (RCCM)",
+              "Tax Registration Card",
+              "Account opening file"
+            ]
+          },
+          {
+            "title": "Processing Times",
+            "items": [
+              "Administrative phase: 3 to 5 days",
+              "Document obtainment: 1 to 2 weeks",
+              "Priority follow-up available on request"
+            ]
+          },
+          {
+            "title": "Support",
+            "items": [
+              "Dedicated contact person",
+              "WhatsApp follow-up available",
+              "Automatic administration reminders"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Business Plan",
+        "subtitle": "Strategy & Financing",
+        "description": "A solid business plan to convince investors and banks.",
+        "features": [
+          "Detailed market analysis",
+          "3-year financial forecasts",
+          "Commercial strategy",
+          "Investor presentation",
+          "Banking support",
+          "Unlimited revisions for 1 month"
+        ],
+        "forWho": "Project leaders, startups, and SMEs seeking financing or investors.",
+        "details": [
+          {
+            "title": "Studies & Analyses",
+            "items": [
+              "In-depth Central African market analysis",
+              "Competition study",
+              "Detailed SWOT analysis",
+              "Strategic positioning"
+            ]
+          },
+          {
+            "title": "Deliverables",
+            "items": [
+              "Complete Business Plan (30-50 pages)",
+              "3-year financial forecasts",
+              "Investor pitch deck",
+              "Executive summary"
+            ]
+          },
+          {
+            "title": "Guarantees",
+            "items": [
+              "Unlimited revisions for 1 month",
+              "Banking support included",
+              "Loan simulation",
+              "Post-financing support"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Legal Advice",
+        "subtitle": "Security & Compliance",
+        "description": "Legal audit and advice to secure your activities.",
+        "features": [
+          "Complete legal audit",
+          "Contract drafting and review",
+          "Labor law advice",
+          "Tax assistance",
+          "Regulatory compliance",
+          "Personalized follow-up"
+        ],
+        "forWho": "Companies, NGOs, and investors needing to secure their legal activities in CAR.",
+        "details": [
+          {
+            "title": "Scope Covered",
+            "items": [
+              "Business law (OHADA)",
+              "Central African labor law",
+              "Tax and customs law",
+              "Contract law"
+            ]
+          },
+          {
+            "title": "Included Services",
+            "items": [
+              "Complete legal audit of your structure",
+              "Contract drafting and review",
+              "Litigation assistance",
+              "Quarterly regulatory monitoring"
+            ]
+          },
+          {
+            "title": "Deadlines & Emergencies",
+            "items": [
+              "Takeover within 24h",
+              "Emergency processing within 48h",
+              "Monthly follow-up for subscribers"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Custom",
+        "subtitle": "Personalized Project",
+        "description": "A fully customized solution for complex or large-scale projects.",
+        "features": [
+          "Complete audit of your needs",
+          "Custom strategy",
+          "Dedicated 7/7 support",
+          "End-to-end management",
+          "Priority follow-up",
+          "Unlimited support during the project"
+        ],
+        "forWho": "Large accounts, international investors, and cross-functional projects requiring multidisciplinary expertise.",
+        "details": [
+          {
+            "title": "À la carte Services",
+            "items": [
+              "Global project audit",
+              "Development strategy",
+              "Complete regulatory support",
+              "Outsourced project management"
+            ]
+          },
+          {
+            "title": "Sectors Covered",
+            "items": [
+              "Agri-industry",
+              "Real estate and construction",
+              "Trade and distribution",
+              "Services and technology"
+            ]
+          },
+          {
+            "title": "Commitments",
+            "items": [
+              "Single dedicated contact",
+              "7/7 availability",
+              "Weekly reporting",
+              "Total confidentiality"
+            ]
+          }
+        ]
+      }
+    ],
+    "badgeLabels": {
+      "popular": "⭐ Most Popular",
+      "custom": "🚀 Custom Quote"
+    },
+    "modal": {
+      "forWho": "Who is this package for?",
+      "requestQuote": "Request a quote",
+      "close": "Close",
+      "viewDetails": "View details →"
+    },
+    "compare": {
+      "criteria": "Criteria",
+      "sections": [
+        {
+          "category": "💰 Price & Deadlines",
+          "rows": [
+            { "label": "Price", "values": ["250 000 FCFA", "350 000 FCFA", "200 000 FCFA", "Custom quote"] },
+            { "label": "Execution time", "values": ["1 to 2 weeks", "2 to 3 weeks", "48h to 1 week", "Per project"] }
+          ]
+        },
+        {
+          "category": "📋 Administrative Formalities",
+          "rows": [
+            { "label": "Drafting of statutes", "values": [true, false, true, true] },
+            { "label": "RCCM registration", "values": [true, false, false, true] },
+            { "label": "Tax registration", "values": [true, false, false, true] },
+            { "label": "Recommended bank account opening", "values": [true, false, false, true] }
+          ]
+        },
+        {
+          "category": "📊 Strategy & Finance",
+          "rows": [
+            { "label": "Market analysis", "values": [false, true, false, true] },
+            { "label": "3-year financial forecasts", "values": [false, true, false, true] },
+            { "label": "Commercial strategy", "values": [false, true, false, true] },
+            { "label": "Investor presentation", "values": [false, true, false, true] },
+            { "label": "Banking support", "values": [true, true, false, true] }
+          ]
+        },
+        {
+          "category": "⚖️ Legal Advice",
+          "rows": [
+            { "label": "Complete legal audit", "values": [false, false, true, true] },
+            { "label": "Contract drafting & review", "values": [false, false, true, true] },
+            { "label": "Labor law advice", "values": [false, false, true, true] },
+            { "label": "Tax assistance", "values": [false, false, true, true] },
+            { "label": "Regulatory compliance", "values": [true, false, true, true] }
+          ]
+        },
+        {
+          "category": "🛎️ Support",
+          "rows": [
+            { "label": "Personalized follow-up", "values": [true, true, true, true] },
+            { "label": "Post-project support", "values": ["1 month", "1 month", "1 month", "Unlimited"] },
+            { "label": "Dedicated 7/7 support", "values": [false, false, false, true] },
+            { "label": "Unlimited revisions", "values": [false, true, false, true] }
+          ]
+        }
+      ]
+    },
+    "footer": {
+      "text": "Indicative prices — a personalized quote will be provided after reviewing your project.",
+      "link": "Contact us",
+      "forEstimate": "for a free estimate."
+    },
+    "cta": "Request a quote",
+    "freeQuote": "Custom quote"
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "title": "Ready to start your project?",
+    "description": "Our team is available to answer your questions and support you in your steps.",
+    "infoTitle": "Contact Information",
+    "office": {
+      "title": "Our Office",
+      "address": "Downtown, Boganda Avenue",
+      "city": "Bangui, Central African Republic"
+    },
+    "phone": {
+      "title": "Phone / WhatsApp",
+      "number": "+236 72 15 32 55"
+    },
+    "email": {
+      "title": "Email",
+      "address1": "contact@alphaconseil-rca.com",
+      "address2": "direction@alphaconseil-rca.com"
+    },
+    "hours": {
+      "title": "Opening Hours",
+      "weekdays": "Monday - Friday",
+      "weekdaysHours": "08:00 - 17:00",
+      "saturday": "Saturday",
+      "saturdayHours": "09:00 - 13:00",
+      "sunday": "Sunday",
+      "sundayHours": "Closed"
+    },
+    "form": {
+      "firstName": "First Name",
+      "firstNamePlaceholder": "John",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Doe",
+      "email": "Email",
+      "emailPlaceholder": "john.doe@example.com",
+      "service": "Service Desired",
+      "serviceOptions": [
+        "Business Formalization",
+        "Business Plan",
+        "Legal Advice",
+        "Other Request"
+      ],
+      "message": "Message",
+      "messagePlaceholder": "Briefly describe your project or need...",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent!"
+    }
+  },
+  "chatbot": {
+    "welcome": "👋 Hello! I am Alpha Conseil's virtual assistant. How can I help you? Ask me a question or choose from the suggestions below.",
+    "header": "Alpha Conseil",
+    "subheader": "Virtual Assistant",
+    "inputPlaceholder": "Type your message...",
+    "inputPlaceholderForm": "Please answer the form above...",
+    "faqs": [
+      {
+        "question": "What services do you offer?",
+        "answer": "Alpha Conseil offers three main services:\n\n1️⃣ **Business Formalization** — Legal creation and registration of your company in CAR (RCCM, statutes, tax registration).\n\n2️⃣ **Business Plan** — Development of solid business plans to convince investors and banks.\n\n3️⃣ **Legal Advice** — Assistance in business law, contracts, taxation, and labor law.\n\nWould you like more details on any of these services?"
+      },
+      {
+        "question": "How much do your services cost?",
+        "answer": "Our prices vary by service:\n\n• **Formalization**: from 250,000 FCFA\n• **Business Plan**: from 350,000 FCFA\n• **Legal Advice**: from 200,000 FCFA\n\nThese are indicative prices. A free personalized quote will be provided after reviewing your project. Contact us to discuss!"
+      },
+      {
+        "question": "Where are you located?",
+        "answer": "We are based in **Bangui**, Central African Republic. We support both local clients and international investors looking to establish themselves in CAR."
+      },
+      {
+        "question": "How can I contact you?",
+        "answer": "You can contact us by:\n\n📞 **Phone**: (+236) 75 29 89 84 / 72 35 66 76\n📧 **Email**: contact@alphaconseil.com\n💬 **WhatsApp**: +236 75 29 89 84\n\nOr fill out the contact form on our website — we will respond within 24h."
+      },
+      {
+        "question": "What are the deadlines?",
+        "answer": "Deadlines vary by service:\n\n• **Business Formalization**: 1 to 2 weeks on average\n• **Business Plan**: 2 to 3 weeks depending on complexity\n• **Legal Advice**: within 48h for emergencies\n\nWe commit to keeping you informed at every step."
+      },
+      {
+        "question": "Who is Alpha Conseil?",
+        "answer": "Alpha Conseil is a consulting firm based in Bangui, born from the desire to offer entrepreneurs and investors in CAR international-standard support.\n\nOur team has over 10 years of combined experience supporting businesses in Central Africa. We combine local expertise with professional rigor to secure and sustain your projects."
+      }
+    ],
+    "quickReplies": [
+      "What services do you offer?",
+      "How much do your services cost?",
+      "Where are you located?",
+      "How can I contact you?"
+    ],
+    "noAnswer": "I couldn't find an answer to your question. Please leave your details below so our team can respond to you directly by email.",
+    "form": {
+      "name": "Your name *",
+      "email": "Your email *",
+      "phone": "Your phone (optional)",
+      "send": "Send",
+      "cancel": "Cancel",
+      "sending": "Sending...",
+      "success": "Message sent successfully!"
+    },
+    "formSuccess": "✅ Thank you! Your message has been sent to our team. We will get back to you as soon as possible.",
+    "formCancel": "No problem. You can also contact us by phone at **(+236) 75 29 89 84** or via the contact form on our site.",
+    "error": {
+      "general": "An error occurred. Please try again or contact us directly.",
+      "connection": "Connection problem. Please try again."
+    }
+  },
+  "footer": {
+    "description": "Your trusted partner for business creation, legal advice, and business plan development in Bangui, CAR.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "serviceItems": ["Formalization", "Business Plan", "Legal Advice", "Support"],
+    "legal": {
+      "notice": "Legal Notice",
+      "privacy": "Privacy Policy"
+    },
+    "copyright": "Alpha Conseil CAR. All rights reserved."
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English"
+  }
+}
