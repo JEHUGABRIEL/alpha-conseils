@@ -1,8 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Sparkles, Rocket, Table, LayoutGrid, Minus } from 'lucide-react';
+import {
+  Check,
+  Sparkles,
+  Rocket,
+  Table,
+  LayoutGrid,
+  Minus,
+  X,
+  Clock,
+  Users,
+  FileText,
+  Shield,
+  Target,
+  ArrowRight,
+} from 'lucide-react';
 
-const plans = [
+// ── Données des plans ──
+
+interface PlanDetail {
+  icon: React.ElementType;
+  title: string;
+  items: string[];
+}
+
+interface Plan {
+  name: string;
+  subtitle: string;
+  price: string | null;
+  unit: string | null;
+  description: string;
+  badge: string | null;
+  features: string[];
+  details: PlanDetail[];
+  forWho: string;
+}
+
+const plans: Plan[] = [
   {
     name: 'Formalisation',
     subtitle: "Création d'entreprise",
@@ -10,7 +44,7 @@ const plans = [
     unit: 'FCFA',
     description:
       "Pack complet pour créer et enregistrer votre entreprise en RCA.",
-    badge: null as string | null,
+    badge: null,
     features: [
       'Rédaction des statuts',
       'Dépôt du RCCM',
@@ -18,6 +52,38 @@ const plans = [
       'Ouverture de compte banque conseillée',
       'Assistance administrative complète',
       "Suivi jusqu'à l'obtention des documents",
+    ],
+    forWho:
+      'Entrepreneurs individuels, auto-entrepreneurs et PME souhaitant créer ou régulariser leur entreprise en RCA.',
+    details: [
+      {
+        icon: FileText,
+        title: 'Documents fournis',
+        items: [
+          'Statuts notariés',
+          'Registre du Commerce (RCCM)',
+          "Carte d'Immatriculation Fiscale",
+          "Dossier d'ouverture de compte",
+        ],
+      },
+      {
+        icon: Clock,
+        title: 'Délais de traitement',
+        items: [
+          'Phase administrative : 3 à 5 jours',
+          'Obtention des documents : 1 à 2 semaines',
+          "Suivi prioritaire possible sur demande",
+        ],
+      },
+      {
+        icon: Users,
+        title: 'Accompagnement',
+        items: [
+          'Interlocuteur dédié',
+          'Suivi WhatsApp disponible',
+          'Relance automatique des administrations',
+        ],
+      },
     ],
   },
   {
@@ -36,6 +102,40 @@ const plans = [
       'Accompagnement bancaire',
       'Révisions illimitées pendant 1 mois',
     ],
+    forWho:
+      "Porteurs de projet, start-ups et PME à la recherche de financements ou d'investisseurs.",
+    details: [
+      {
+        icon: Target,
+        title: 'Études & Analyses',
+        items: [
+          'Analyse approfondie du marché centrafricain',
+          'Étude de la concurrence',
+          'Analyse SWOT détaillée',
+          "Positionnement stratégique",
+        ],
+      },
+      {
+        icon: FileText,
+        title: 'Livrables',
+        items: [
+          'Business Plan complet (30-50 pages)',
+          'Prévisions financières sur 3 ans',
+          'Pitch deck investisseurs',
+          'Executive summary',
+        ],
+      },
+      {
+        icon: Shield,
+        title: 'Garanties',
+        items: [
+          'Révisions illimitées pendant 1 mois',
+          'Accompagnement bancaire inclus',
+          "Simulation d'obtention de prêt",
+          'Support post-financement',
+        ],
+      },
+    ],
   },
   {
     name: 'Conseil Juridique',
@@ -52,6 +152,39 @@ const plans = [
       'Assistance fiscale',
       'Conformité réglementaire',
       'Suivi personnalisé',
+    ],
+    forWho:
+      'Entreprises, ONG et investisseurs ayant besoin de sécuriser leurs activités juridiques en RCA.',
+    details: [
+      {
+        icon: Shield,
+        title: 'Périmètre couvert',
+        items: [
+          "Droit des affaires (OHADA)",
+          'Droit du travail centrafricain',
+          'Droit fiscal et douanier',
+          'Droit des contrats',
+        ],
+      },
+      {
+        icon: FileText,
+        title: 'Prestations incluses',
+        items: [
+          'Audit juridique complet de votre structure',
+          'Rédaction et révision de contrats',
+          'Assistance contentieux',
+          "Veille réglementaire trimestrielle",
+        ],
+      },
+      {
+        icon: Clock,
+        title: 'Délais & Urgences',
+        items: [
+          'Prise en charge sous 24h',
+          'Traitement des urgences en 48h',
+          'Suivi mensuel pour les abonnés',
+        ],
+      },
     ],
   },
   {
@@ -70,8 +203,44 @@ const plans = [
       'Suivi prioritaire',
       'Support illimité pendant le projet',
     ],
+    forWho:
+      'Grands comptes, investisseurs internationaux et projets transverses nécessitant une expertise pluridisciplinaire.',
+    details: [
+      {
+        icon: Users,
+        title: 'Prestations à la carte',
+        items: [
+          'Audit global de votre projet',
+          'Stratégie de développement',
+          'Accompagnement réglementaire complet',
+          'Gestion de projet externalisée',
+        ],
+      },
+      {
+        icon: Target,
+        title: 'Secteurs couverts',
+        items: [
+          'Agro-industrie',
+          'Immobilier et construction',
+          'Commerce et distribution',
+          'Services et technologies',
+        ],
+      },
+      {
+        icon: Shield,
+        title: 'Engagements',
+        items: [
+          'Interlocuteur unique dédié',
+          'Disponibilité 7j/7',
+          'Reporting hebdomadaire',
+          'Confidentialité totale',
+        ],
+      },
+    ],
   },
 ];
+
+// ── Données de comparaison ──
 
 interface ComparisonRow {
   label: string;
@@ -83,7 +252,7 @@ const comparisonSections: { category: string; rows: ComparisonRow[] }[] = [
     category: '💰 Prix & Délais',
     rows: [
       { label: 'Prix', values: ['250 000 FCFA', '350 000 FCFA', '200 000 FCFA', 'Sur devis'] },
-      { label: 'Délais d\'exécution', values: ['1 à 2 sem.', '2 à 3 sem.', '48h à 1 sem.', 'Selon projet'] },
+      { label: "Délais d'exécution", values: ['1 à 2 sem.', '2 à 3 sem.', '48h à 1 sem.', 'Selon projet'] },
       { label: 'Devis gratuit', values: [true, true, true, true] },
     ],
   },
@@ -138,8 +307,182 @@ function CellValue({ value }: { value: boolean | string }) {
   return <span className="text-sm text-slate-700 font-medium">{value}</span>;
 }
 
+// ── Modale de détails ──
+
+function PlanModal({
+  plan,
+  onClose,
+}: {
+  plan: Plan;
+  onClose: () => void;
+}) {
+  // Verrouille le scroll + fermeture avec Échap
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Détails du pack ${plan.name}`}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+
+      {/* Contenu */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 20 }}
+        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white rounded-2xl shadow-2xl"
+      >
+        {/* En-tête avec bandeau */}
+        <div
+          className={`p-6 sm:p-8 ${
+            plan.badge === 'popular'
+              ? 'bg-blue-900'
+              : plan.badge === 'custom'
+              ? 'bg-emerald-600'
+              : 'bg-slate-800'
+          }`}
+        >
+          <div className="flex items-start justify-between">
+            <div>
+              <span
+                className={`inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3 ${
+                  plan.badge === 'popular'
+                    ? 'bg-amber-500 text-white'
+                    : plan.badge === 'custom'
+                    ? 'bg-emerald-500 text-white'
+                    : 'bg-white/20 text-white'
+                }`}
+              >
+                {plan.badge === 'popular'
+                  ? '⭐ Le plus populaire'
+                  : plan.badge === 'custom'
+                  ? '🚀 Sur devis'
+                  : plan.name}
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-1">
+                {plan.name}
+              </h3>
+              <p className="text-white/80 text-sm">{plan.subtitle}</p>
+              {plan.price ? (
+                <p className="text-2xl font-bold text-white mt-3">
+                  {plan.price}{' '}
+                  <span className="text-base font-medium text-white/70">
+                    {plan.unit}
+                  </span>
+                </p>
+              ) : (
+                <p className="text-xl font-bold text-white mt-3">Sur devis</p>
+              )}
+            </div>
+            <button
+              onClick={onClose}
+              className="text-white/70 hover:text-white hover:bg-white/10 rounded-lg p-1.5 transition-all"
+              aria-label="Fermer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+
+        <div className="p-6 sm:p-8 space-y-8">
+          {/* Pour qui */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-blue-900 mb-2 flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              À qui s'adresse ce pack ?
+            </h4>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              {plan.forWho}
+            </p>
+          </div>
+
+          {/* Sections de détails */}
+          {plan.details.map((section, i) => {
+            const Icon = section.icon;
+            return (
+              <div key={i}>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-blue-900 mb-3 flex items-center gap-2">
+                  <Icon className="w-4 h-4" />
+                  {section.title}
+                </h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {section.items.map((item, j) => (
+                    <li
+                      key={j}
+                      className="flex items-start gap-2.5 text-sm text-slate-600"
+                    >
+                      <Check
+                        className={`w-4 h-4 shrink-0 mt-0.5 ${
+                          plan.badge === 'popular'
+                            ? 'text-amber-500'
+                            : plan.badge === 'custom'
+                            ? 'text-emerald-500'
+                            : 'text-blue-900'
+                        }`}
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100">
+            <a
+              href="#contact"
+              onClick={onClose}
+              className={`flex-1 text-center py-3 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 ${
+                plan.badge === 'popular'
+                  ? 'bg-blue-900 text-white hover:bg-blue-800 shadow-md'
+                  : plan.badge === 'custom'
+                  ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-md'
+                  : 'bg-blue-900 text-white hover:bg-blue-800'
+              }`}
+            >
+              Demander un devis
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <button
+              onClick={onClose}
+              className="px-6 py-3 rounded-lg text-sm font-medium text-slate-500 hover:text-slate-700 hover:bg-slate-50 transition-all"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+// ── Composant principal ──
+
 export function Pricing() {
   const [view, setView] = useState<'cards' | 'compare'>('cards');
+  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
 
   return (
     <section id="tarifs" className="py-24 bg-slate-50 overflow-hidden">
@@ -209,7 +552,7 @@ export function Pricing() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.15 }}
+                    transition={{ duration: 0.6, delay: index * 0.25 }}
                     className={`relative flex flex-col rounded-2xl border-2 p-8 transition-all duration-300 ${
                       plan.badge === 'popular'
                         ? 'border-blue-900 bg-white shadow-xl scale-[1.02] md:scale-105'
@@ -237,7 +580,9 @@ export function Pricing() {
                       <h4 className="text-sm font-semibold text-blue-900 uppercase tracking-wider mb-1">
                         {plan.name}
                       </h4>
-                      <p className="text-slate-500 text-sm mb-4">{plan.subtitle}</p>
+                      <p className="text-slate-500 text-sm mb-4">
+                        {plan.subtitle}
+                      </p>
                       {plan.price ? (
                         <div className="flex items-baseline gap-1">
                           <span className="text-3xl font-bold text-slate-900">
@@ -260,12 +605,14 @@ export function Pricing() {
                     </div>
 
                     {/* Features */}
-                    <ul className="space-y-3 mb-8 flex-1">
+                    <ul className="space-y-3 mb-6 flex-1">
                       {plan.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-3">
                           <Check
                             className={`w-5 h-5 shrink-0 mt-0.5 ${
-                              plan.badge === 'popular' ? 'text-amber-500' : 'text-blue-900'
+                              plan.badge === 'popular'
+                                ? 'text-amber-500'
+                                : 'text-blue-900'
                             }`}
                           />
                           <span className="text-slate-600 text-[0.92rem]">
@@ -274,6 +621,14 @@ export function Pricing() {
                         </li>
                       ))}
                     </ul>
+
+                    {/* Bouton Voir les détails */}
+                    <button
+                      onClick={() => setSelectedPlan(plan)}
+                      className="w-full text-center py-2.5 rounded-lg font-medium text-xs transition-all duration-200 mb-2 border border-slate-200 text-slate-600 hover:border-blue-300 hover:text-blue-900 hover:bg-blue-50"
+                    >
+                      Voir les détails →
+                    </button>
 
                     {/* CTA */}
                     <a
@@ -305,7 +660,6 @@ export function Pricing() {
             >
               <div className="max-w-6xl mx-auto overflow-x-auto">
                 <table className="w-full border-collapse bg-white rounded-2xl shadow-sm overflow-hidden">
-                  {/* En-tête du tableau */}
                   <thead>
                     <tr className="border-b border-slate-200">
                       <th className="text-left p-5 min-w-[200px]">
@@ -345,11 +699,9 @@ export function Pricing() {
                     </tr>
                   </thead>
 
-                  {/* Corps du tableau */}
                   <tbody>
                     {comparisonSections.map((section, si) => (
                       <React.Fragment key={si}>
-                        {/* Ligne catégorie */}
                         <tr className="bg-slate-50">
                           <td
                             colSpan={5}
@@ -358,7 +710,6 @@ export function Pricing() {
                             {section.category}
                           </td>
                         </tr>
-                        {/* Lignes de critères */}
                         {section.rows.map((row, ri) => (
                           <tr
                             key={ri}
@@ -378,7 +729,6 @@ export function Pricing() {
                     ))}
                   </tbody>
 
-                  {/* Pied : CTA */}
                   <tfoot>
                     <tr className="border-t border-slate-200">
                       <td className="p-4 pl-5" />
@@ -427,6 +777,16 @@ export function Pricing() {
           </p>
         </motion.div>
       </div>
+
+      {/* Modale */}
+      <AnimatePresence>
+        {selectedPlan && (
+          <PlanModal
+            plan={selectedPlan}
+            onClose={() => setSelectedPlan(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

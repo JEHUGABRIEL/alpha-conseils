@@ -73,11 +73,9 @@ export function Contact() {
                   <Phone className="w-6 h-6 text-amber-400" />
                 </div>
                 <div>
-                  <h5 className="font-semibold text-lg mb-1">Téléphone</h5>
+                  <h5 className="font-semibold text-lg mb-1">Téléphone / WhatsApp</h5>
                   <p className="text-blue-200">
-                    +236 70 00 00 00
-                    <br />
-                    +236 75 00 00 00
+                    +236 72 15 32 55
                   </p>
                 </div>
               </div>

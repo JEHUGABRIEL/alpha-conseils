@@ -1,23 +1,43 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const slides = [
   {
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80',
     alt: 'Bureau professionnel élégant',
+    badge: 'CABINET DE CONSEIL À BANGUI',
+    title: 'Votre partenaire stratégique pour la réussite de vos projets en Centrafrique',
+    titleHighlight: 'Centrafrique',
+    description:
+      "Alpha Conseil vous accompagne dans la formalisation de votre entreprise, l'élaboration de vos business plans et vous offre un conseil juridique sur mesure.",
   },
   {
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
     alt: 'Consultation d\'affaires',
+    badge: 'EXPERTISE EN BUSINESS PLAN',
+    title: 'Transformez votre vision en un business plan solide et convaincant',
+    titleHighlight: 'business plan',
+    description:
+      "Nous vous aidons à structurer votre projet, à convaincre les investisseurs et à décrocher les financements nécessaires avec des prévisions financières robustes et une stratégie claire.",
   },
   {
     image: 'https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80',
     alt: 'Équipe en réunion',
+    badge: 'SÉCURISATION JURIDIQUE',
+    title: 'Sécurisez vos activités avec un conseil juridique d\'excellence',
+    titleHighlight: 'conseil juridique',
+    description:
+      "Protégez vos intérêts avec notre expertise en droit des affaires, droit du travail et fiscalité centrafricaine. Nous anticipons les risques pour vous permettre d'entreprendre sereinement.",
   },
   {
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2011&q=80',
     alt: 'Analyse financière',
+    badge: 'ACCOMPAGNEMENT SUR MESURE',
+    title: 'Un accompagnement personnalisé pour chaque étape de votre projet',
+    titleHighlight: 'accompagnement',
+    description:
+      "Que vous soyez entrepreneur individuel, PME ou investisseur international, nous adaptons nos services à vos besoins spécifiques pour garantir votre réussite en RCA.",
   },
 ];
 
@@ -51,18 +71,6 @@ export function Hero() {
     },
     [current, startTimer],
   );
-
-  const handleNext = useCallback(() => {
-    setDirection(1);
-    setCurrent((prev) => (prev + 1) % slides.length);
-    startTimer();
-  }, [startTimer]);
-
-  const handlePrev = useCallback(() => {
-    setDirection(-1);
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-    startTimer();
-  }, [startTimer]);
 
   const variants = {
     enter: (dir: number) => ({
@@ -113,22 +121,6 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/20 to-transparent" />
       </div>
 
-      {/* Flèches de navigation */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-4 z-20 hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm text-white/70 hover:bg-white/20 hover:text-white border border-white/20 transition-all duration-200"
-        aria-label="Slide précédent"
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </button>
-      <button
-        onClick={handleNext}
-        className="absolute right-4 z-20 hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm text-white/70 hover:bg-white/20 hover:text-white border border-white/20 transition-all duration-200"
-        aria-label="Slide suivant"
-      >
-        <ChevronRight className="h-6 w-6" />
-      </button>
-
       {/* Contenu texte */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl">
@@ -139,7 +131,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <span className="inline-block py-1 px-3 rounded-full bg-amber-500/20 text-amber-400 text-sm font-semibold tracking-wider mb-6 border border-amber-500/30">
-              CABINET DE CONSEIL À BANGUI
+              {slides[current].badge}
             </span>
           </motion.div>
 
@@ -150,8 +142,14 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
           >
-            Votre partenaire stratégique pour la réussite de vos projets en{' '}
-            <span className="text-amber-500">Centrafrique</span>
+            {slides[current].title.split(slides[current].titleHighlight).length > 1
+              ? slides[current].title.split(slides[current].titleHighlight)[0]
+              : slides[current].title}
+            {slides[current].title.includes(slides[current].titleHighlight) && (
+              <span className="text-amber-500">{slides[current].titleHighlight}</span>
+            )}
+            {slides[current].title.split(slides[current].titleHighlight).length > 1 &&
+              slides[current].title.split(slides[current].titleHighlight).slice(1).join('')}
           </motion.h1>
 
           <motion.p
@@ -161,9 +159,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed"
           >
-            Alpha Conseil vous accompagne dans la formalisation de votre
-            entreprise, l'élaboration de vos business plans et vous offre un
-            conseil juridique sur mesure.
+            {slides[current].description}
           </motion.p>
 
           <motion.div

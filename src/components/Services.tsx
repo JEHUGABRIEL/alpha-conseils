@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
 import { Building2, LineChart, Scale } from 'lucide-react';
 const services = [

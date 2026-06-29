@@ -1,8 +1,9 @@
-import React from 'react';
+
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { Services } from '../components/Services';
 import { Pricing } from '../components/Pricing';
+import { WhyChooseUs } from '../components/WhyChooseUs';
 import { About } from '../components/About';
 import { Testimonials } from '../components/Testimonials';
 import { Contact } from '../components/Contact';
@@ -15,6 +16,7 @@ export function LandingPage() {
         <Hero />
         <Services />
         <Pricing />
+        <WhyChooseUs />
         <About />
         <Testimonials />
         <Contact />
