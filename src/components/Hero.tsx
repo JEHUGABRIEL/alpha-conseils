@@ -41,6 +41,20 @@ const slides = [
   },
 ];
 
+function renderTitle(slide: (typeof slides)[number]) {
+  if (!slide.title.includes(slide.titleHighlight)) {
+    return slide.title;
+  }
+  const [before, after] = slide.title.split(slide.titleHighlight);
+  return (
+    <>
+      {before}
+      <span className="text-amber-500">{slide.titleHighlight}</span>
+      {after}
+    </>
+  );
+}
+
 export function Hero() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -142,14 +156,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
           >
-            {slides[current].title.split(slides[current].titleHighlight).length > 1
-              ? slides[current].title.split(slides[current].titleHighlight)[0]
-              : slides[current].title}
-            {slides[current].title.includes(slides[current].titleHighlight) && (
-              <span className="text-amber-500">{slides[current].titleHighlight}</span>
-            )}
-            {slides[current].title.split(slides[current].titleHighlight).length > 1 &&
-              slides[current].title.split(slides[current].titleHighlight).slice(1).join('')}
+            {renderTitle(slides[current])}
           </motion.h1>
 
           <motion.p

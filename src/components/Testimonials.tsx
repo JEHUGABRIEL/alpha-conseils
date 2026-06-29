@@ -79,6 +79,83 @@ function useItemsPerPage() {
   return itemsPerPage;
 }
 
+// ── Variants d'animation ──
+
+const headerVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
+const headerSubVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.98 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, delay: i * 0.15, ease: [0.25, 0.1, 0.25, 1] },
+  }),
+};
+
+const testimonialCardVariants = {
+  hidden: { opacity: 0 },
+  visible: (i: number) => ({
+    opacity: 1,
+    transition: {
+      duration: 0.45,
+      delay: 0.1 + i * 0.12,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  }),
+};
+
+const quoteVariants = {
+  hidden: { opacity: 0, scale: 0.5, rotate: -15 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: { type: 'spring', stiffness: 180, damping: 12, delay: 0.2 },
+  },
+};
+
+const starVariants = {
+  hidden: { opacity: 0, scale: 0 },
+  visible: (i: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 250,
+      damping: 10,
+      delay: 0.25 + i * 0.08,
+    },
+  }),
+};
+
+const dotVariants = {
+  hidden: { opacity: 0, y: 10, scale: 0.5 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.4, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] },
+  }),
+};
+
+const ctaVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
 export function Testimonials() {
   const itemsPerPage = useItemsPerPage();
   const pages = chunkArray(testimonials, itemsPerPage);
@@ -90,7 +167,6 @@ export function Testimonials() {
   const totalPagesRef = useRef(totalPages);
   totalPagesRef.current = totalPages;
 
-  // S'assurer que la page courante reste valide si itemsPerPage change
   useEffect(() => {
     if (page >= totalPages) setPage(0);
   }, [totalPages, page]);
@@ -148,22 +224,43 @@ export function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-blue-900 font-semibold tracking-wide uppercase text-sm mb-3">
+          <motion.span
+            custom={0}
+            variants={headerSubVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="inline-block text-blue-900 font-semibold tracking-wide uppercase text-sm mb-3"
+          >
             Témoignages
-          </h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+          </motion.span>
+          <motion.h3
+            custom={1}
+            variants={headerSubVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+          >
             Ce que disent nos clients
-          </h3>
-          <p className="text-lg text-slate-600">
+          </motion.h3>
+          <motion.p
+            custom={2}
+            variants={headerSubVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-lg text-slate-600"
+          >
             La satisfaction de nos clients est notre meilleure fierté.
             Découvrez leurs retours d'expérience.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Carrousel */}
@@ -197,24 +294,41 @@ export function Testimonials() {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {pages[page]?.map((testimonial, index) => (
-                <div
+                <motion.div
                   key={index}
+                  custom={index}
+                  variants={testimonialCardVariants}
+                  initial="hidden"
+                  animate="visible"
                   className="relative bg-slate-50 rounded-2xl p-7 border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
                 >
                   {/* Guillemet décoratif */}
-                  <Quote className="absolute top-5 right-5 w-8 h-8 text-blue-900/5 group-hover:text-blue-900/10 transition-colors duration-300" />
+                  <motion.div
+                    variants={quoteVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    <Quote className="absolute top-5 right-5 w-8 h-8 text-blue-900/5 group-hover:text-blue-900/10 transition-colors duration-300" />
+                  </motion.div>
 
                   {/* Étoiles */}
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
+                      <motion.div
                         key={i}
-                        className={`w-4 h-4 ${
-                          i < testimonial.rating
-                            ? 'text-amber-500 fill-amber-500'
-                            : 'text-slate-200'
-                        }`}
-                      />
+                        custom={i}
+                        variants={starVariants}
+                        initial="hidden"
+                        animate="visible"
+                      >
+                        <Star
+                          className={`w-4 h-4 ${
+                            i < testimonial.rating
+                              ? 'text-amber-500 fill-amber-500'
+                              : 'text-slate-200'
+                          }`}
+                        />
+                      </motion.div>
                     ))}
                   </div>
 
@@ -225,10 +339,13 @@ export function Testimonials() {
 
                   {/* Auteur */}
                   <div className="flex items-center gap-3.5 pt-4 border-t border-slate-200">
-                    <img
+                    <motion.img
                       src={testimonial.photo}
                       alt={testimonial.name}
                       className="w-10 h-10 rounded-full object-cover shrink-0"
+                      whileHover={{ scale: 1.2, borderColor: '#1e3a5f' }}
+                      style={{ border: '2px solid transparent' }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 12 }}
                     />
                     <div className="min-w-0">
                       <strong className="block text-[0.9rem] text-slate-900 truncate">
@@ -239,17 +356,24 @@ export function Testimonials() {
                       </span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </AnimatePresence>
         </div>
 
         {/* Dots de pagination */}
-        <div className="flex items-center justify-center gap-2.5 mt-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-20px' }}
+          className="flex items-center justify-center gap-2.5 mt-10"
+        >
           {pages.map((_, i) => (
-            <button
+            <motion.button
               key={i}
+              custom={i}
+              variants={dotVariants}
               onClick={() => goTo(i)}
               className={`transition-all duration-300 rounded-full ${
                 i === page
@@ -259,25 +383,28 @@ export function Testimonials() {
               aria-label={`Aller au slide ${i + 1}`}
             />
           ))}
-        </div>
+        </motion.div>
 
         {/* Appel à l'action bas */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          variants={ctaVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
           className="text-center mt-14"
         >
           <p className="text-slate-500 mb-5">
             Rejoignez nos clients satisfaits et donnez vie à vos projets.
           </p>
-          <a
+          <motion.a
             href="#contact"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 transition-colors"
+            whileHover={{ scale: 1.05, boxShadow: '0 10px 30px -10px rgba(30, 58, 95, 0.4)' }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 10 }}
           >
             Contactez-nous
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>

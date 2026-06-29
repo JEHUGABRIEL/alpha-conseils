@@ -3,6 +3,7 @@ import { Menu, X, Scale } from 'lucide-react';
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -10,6 +11,18 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Bloquer le scroll du body quand le menu mobile est ouvert
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
   const navLinks = [
   {
     name: 'Accueil',
@@ -81,9 +94,15 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen &&
-      <div className="md:hidden bg-white absolute top-full left-0 right-0 shadow-lg border-t border-slate-100">
-          <div className="px-4 pt-2 pb-6 space-y-1">
+      {isMobileMenuOpen && (
+        <>
+          {/* Overlay de fond */}
+          <div
+            className="md:hidden fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          <div className="md:hidden bg-white fixed inset-0 z-40 h-[100dvh] overflow-y-auto shadow-lg" style={{ paddingTop: isScrolled ? '72px' : '88px' }}>
+          <div className="px-4 pt-2 pb-10 space-y-1">
             {navLinks.map((link) =>
           <a
             key={link.name}
@@ -105,7 +124,8 @@ export function Navbar() {
             </div>
           </div>
         </div>
-      }
+        </>
+      )}
     </nav>);
 
 }
