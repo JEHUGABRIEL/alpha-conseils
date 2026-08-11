@@ -44,9 +44,11 @@ export function Contact() {
       <div className="relative bg-blue-900 pt-12 sm:pt-16 pb-64 sm:pb-72 text-white overflow-hidden">
         {/* Image de fond */}
         <img
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+          src="/images/contact-bg.jpg"
           alt=""
           aria-hidden="true"
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-blue-900/85" aria-hidden="true" />

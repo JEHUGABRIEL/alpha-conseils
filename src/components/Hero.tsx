@@ -48,10 +48,10 @@ export function Hero() {
   }, [startTimer]);
 
   const images = [
-    'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80',
-    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-    'https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80',
-    'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2011&q=80',
+    '/images/hero-1.jpg',
+    '/images/hero-2.jpg',
+    '/images/hero-3.jpg',
+    '/images/hero-4.jpg',
   ];
 
   const variants = {
@@ -78,7 +78,7 @@ export function Hero() {
       className="relative min-h-[75vh] flex items-center pt-20 overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
-        <AnimatePresence custom={direction} mode="popLayout">
+        <AnimatePresence custom={direction}>
           <motion.div
             key={current}
             custom={direction}
