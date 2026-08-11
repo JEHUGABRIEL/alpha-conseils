@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -22,7 +22,6 @@ export function About() {
   const { t } = useTranslation();
   const benefits = t('about.benefits', { returnObjects: true }) as string[];
   const [currentImage, setCurrentImage] = useState(0);
-  const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startTimer = () => {
@@ -56,28 +55,16 @@ export function About() {
             className="lg:w-1/2"
           >
             <div className="relative">
-              {/* Images en crossfade */}
+              {/* Image du carousel (chargement direct, sans animation JS — 100% fiable) */}
               <div className="relative h-[500px] w-full overflow-hidden rounded-2xl bg-slate-200">
-                {/* Shimmer : visible uniquement pendant le chargement initial (masqué après le 1er chargement) */}
-                {!hasLoadedOnce && (
-                  <div className="absolute inset-0 pointer-events-none shimmer" aria-hidden="true" />
-                )}
+                {/* Shimmer : simple fond de chargement derrière l'image */}
+                <div className="absolute inset-0 pointer-events-none shimmer" aria-hidden="true" />
 
-                <AnimatePresence>
-                  <motion.img
-                    key={currentImage}
-                    src={aboutImages[currentImage].src}
-                    alt={aboutImages[currentImage].alt}
-                    onLoad={() => setHasLoadedOnce(true)}
-                    loading="lazy"
-                    decoding="async"
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.8, ease: 'easeInOut' }}
-                    className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl"
-                  />
-                </AnimatePresence>
+                <img
+                  src={aboutImages[currentImage].src}
+                  alt={aboutImages[currentImage].alt}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
               </div>
 
               {/* Indicateurs */}
