@@ -5,7 +5,10 @@
     "about": "À Propos",
     "contact": "Contact",
     "bookAppointment": "Prendre Rendez-vous",
-    "companyName": "Alpha Conseil"
+    "companyName": "Alpha Conseil",
+    "menuLabel": "Navigation",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
   },
   "hero": {
     "slides": [
@@ -345,48 +348,52 @@
       "close": "Fermer",
       "viewDetails": "Voir les détails →"
     },
+    "quoteModal": {
+      "title": "Demander un devis",
+      "forPlan": "Pack sélectionné :",
+      "name": "Nom complet",
+      "namePlaceholder": "Jean Dupont",
+      "email": "Email",
+      "emailPlaceholder": "jean.dupont@exemple.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "+236 00 00 00 00",
+      "message": "Votre projet",
+      "messagePlaceholder": "Décrivez brièvement votre projet ou vos besoins...",
+      "submit": "Envoyer ma demande",
+      "sending": "Envoi en cours...",
+      "successTitle": "Demande envoyée !",
+      "successText": "Merci pour votre demande de devis. Notre équipe vous recontactera sous 24h.",
+      "error": "Une erreur est survenue. Veuillez réessayer ou nous contacter directement.",
+      "privacy": "Vos informations restent confidentielles et ne sont jamais partagées.",
+      "close": "Fermer"
+    },
     "compare": {
       "criteria": "Critères",
-      "sections": [
-        {
-          "category": "💰 Prix & Délais",
-          "rows": [
+      "sections": [            { "category": "Prix & Délais", "rows": [
             { "label": "Prix", "values": ["250 000 FCFA", "350 000 FCFA", "200 000 FCFA", "Sur devis"] },
             { "label": "Délais d'exécution", "values": ["1 à 2 sem.", "2 à 3 sem.", "48h à 1 sem.", "Selon projet"] }
           ]
-        },
-        {
-          "category": "📋 Formalités administratives",
-          "rows": [
+        },            { "category": "Formalités administratives", "rows": [
             { "label": "Rédaction des statuts", "values": [true, false, true, true] },
             { "label": "Dépôt du RCCM", "values": [true, false, false, true] },
             { "label": "Immatriculation fiscale", "values": [true, false, false, true] },
             { "label": "Ouverture de compte conseillée", "values": [true, false, false, true] }
           ]
-        },
-        {
-          "category": "📊 Stratégie & Finance",
-          "rows": [
+        },            { "category": "Stratégie & Finance", "rows": [
             { "label": "Analyse de marché", "values": [false, true, false, true] },
             { "label": "Prévisions financières 3 ans", "values": [false, true, false, true] },
             { "label": "Stratégie commerciale", "values": [false, true, false, true] },
             { "label": "Présentation investisseurs", "values": [false, true, false, true] },
             { "label": "Accompagnement bancaire", "values": [true, true, false, true] }
           ]
-        },
-        {
-          "category": "⚖️ Conseil Juridique",
-          "rows": [
+        },            { "category": "Conseil Juridique", "rows": [
             { "label": "Audit juridique complet", "values": [false, false, true, true] },
             { "label": "Rédaction & révision de contrats", "values": [false, false, true, true] },
             { "label": "Conseil en droit du travail", "values": [false, false, true, true] },
             { "label": "Assistance fiscale", "values": [false, false, true, true] },
             { "label": "Conformité réglementaire", "values": [true, false, true, true] }
           ]
-        },
-        {
-          "category": "🛎️ Accompagnement",
-          "rows": [
+        },            { "category": "Accompagnement", "rows": [
             { "label": "Suivi personnalisé", "values": [true, true, true, true] },
             { "label": "Support après projet", "values": ["1 mois", "1 mois", "1 mois", "Illimité"] },
             { "label": "Accompagnement dédié 7j/7", "values": [false, false, false, true] },

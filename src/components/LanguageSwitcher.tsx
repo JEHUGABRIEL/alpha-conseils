@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
   const { i18n } = useTranslation();
   const currentLang = i18n.language?.startsWith('en') ? 'en' : 'fr';
 
@@ -12,7 +12,11 @@ export function LanguageSwitcher() {
   return (
     <button
       onClick={toggleLanguage}
-      className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors border border-current/20 hover:bg-white/10"
+      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-200 ${
+        dark
+          ? 'text-slate-600 border border-slate-200 hover:bg-slate-50 hover:border-slate-300'
+          : 'text-white border border-white/25 hover:bg-white/10'
+      }`}
       aria-label={currentLang === 'fr' ? 'Switch to English' : 'Passer en français'}
     >
       {currentLang === 'fr' ? (

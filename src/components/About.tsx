@@ -44,7 +44,7 @@ export function About() {
   }, []);
 
   return (
-    <section id="apropos" className="py-24 bg-slate-50 overflow-hidden">
+    <section id="apropos" className="pt-16 pb-24 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           <motion.div

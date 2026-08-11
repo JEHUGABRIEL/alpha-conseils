@@ -101,7 +101,7 @@ export function WhyChooseUs() {
   }>;
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="pt-16 pb-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={headerVariants}

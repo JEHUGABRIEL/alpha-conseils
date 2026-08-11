@@ -47,15 +47,6 @@ export function Hero() {
     };
   }, [startTimer]);
 
-  const handleGoTo = useCallback(
-    (index: number) => {
-      setDirection(index > current ? 1 : -1);
-      setCurrent(index);
-      startTimer();
-    },
-    [current, startTimer],
-  );
-
   const images = [
     'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80',
     'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
@@ -84,7 +75,7 @@ export function Hero() {
   return (
     <section
       id="accueil"
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
+      className="relative min-h-[75vh] flex items-center pt-20 overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
         <AnimatePresence custom={direction} mode="popLayout">
@@ -112,26 +103,26 @@ export function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl">
-          <motion.div
-            key={`content-${current}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <span className="inline-block py-1 px-3 rounded-full bg-amber-500/20 text-amber-400 text-sm font-semibold tracking-wider mb-6 border border-amber-500/30">
-              {slides[current]?.badge}
-            </span>
-          </motion.div>
-
           <motion.h1
             key={`title-${current}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
           >
             {slides[current] && renderTitle(slides[current])}
           </motion.h1>
+
+          <motion.p
+            key={`subtitle-${current}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center gap-3 text-amber-400 text-sm font-semibold uppercase tracking-[0.3em] mb-6"
+          >
+            <span className="inline-block w-10 h-px bg-amber-500/70" aria-hidden="true" />
+            {slides[current]?.badge}
+          </motion.p>
 
           <motion.p
             key={`desc-${current}`}
@@ -167,20 +158,6 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handleGoTo(index)}
-            className={`transition-all duration-300 rounded-full ${
-              index === current
-                ? 'w-8 h-2.5 bg-amber-500'
-                : 'w-2.5 h-2.5 bg-white/40 hover:bg-white/70'
-            }`}
-            aria-label={`Aller au slide ${index + 1}`}
-          />
-        ))}
-      </div>
     </section>
   );
 }

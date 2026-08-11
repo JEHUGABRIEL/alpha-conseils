@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, ChevronRight, Mail, CheckCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { WEB3FORMS_KEY } from '../constants';
 
 interface Message {
   text: string;
@@ -14,7 +15,6 @@ interface QAPair {
   answer: string;
 }
 
-const WEB3FORMS_KEY = 'b37e403a-126b-4b48-b826-c60c8449cdd2';
 
 function ContactForm({
   question,
@@ -84,7 +84,7 @@ function ContactForm({
         required
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="w-full text-xs border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-blue-400 transition-colors placeholder:text-slate-400"
+        className="w-full text-base sm:text-sm border border-slate-200 rounded-lg px-3 py-2.5 outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-100 transition-colors placeholder:text-slate-400"
       />
       <input
         type="email"
@@ -92,21 +92,21 @@ function ContactForm({
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full text-xs border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-blue-400 transition-colors placeholder:text-slate-400"
+        className="w-full text-base sm:text-sm border border-slate-200 rounded-lg px-3 py-2.5 outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-100 transition-colors placeholder:text-slate-400"
       />
       <input
         type="tel"
         placeholder={t('chatbot.form.phone')}
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
-        className="w-full text-xs border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-blue-400 transition-colors placeholder:text-slate-400"
+        className="w-full text-base sm:text-sm border border-slate-200 rounded-lg px-3 py-2.5 outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-100 transition-colors placeholder:text-slate-400"
       />
-      {error && <p className="text-xs text-red-500">{error}</p>}
+      {error && <p className="text-sm text-red-500">{error}</p>}
       <div className="flex gap-2 pt-1">
         <button
           type="submit"
           disabled={submitting}
-          className="flex-1 text-xs bg-blue-900 text-white rounded-lg py-2 font-semibold hover:bg-blue-800 disabled:opacity-50 transition-colors"
+          className="flex-1 text-base sm:text-sm bg-blue-900 text-white rounded-lg py-2.5 font-semibold hover:bg-blue-800 disabled:opacity-50 transition-colors"
         >
           {submitting ? t('chatbot.form.sending') : t('chatbot.form.send')}
         </button>
@@ -114,7 +114,7 @@ function ContactForm({
           type="button"
           onClick={onCancel}
           disabled={submitting}
-          className="text-xs text-slate-500 py-2 px-3 hover:text-slate-700 transition-colors"
+          className="text-base sm:text-sm text-slate-500 py-2.5 px-3 hover:text-slate-700 transition-colors"
         >
           {t('chatbot.form.cancel')}
         </button>
@@ -282,7 +282,7 @@ export function Chatbot() {
     <>
       <button
         onClick={handleOpen}
-        className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-blue-900 text-white shadow-lg hover:bg-blue-800 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center"
+        className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 w-14 h-14 max-[480px]:w-12 max-[480px]:h-12 rounded-full bg-blue-900 text-white shadow-lg hover:bg-blue-800 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center"
         aria-label="Ouvrir le chatbot"
       >
         <MessageCircle className="w-6 h-6" />
@@ -300,9 +300,9 @@ export function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed bottom-24 right-6 z-40 w-[360px] max-[400px]:right-3 max-[400px]:w-[calc(100%-24px)] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden"
+            className="fixed bottom-24 right-3 sm:right-6 z-40 w-[min(360px,calc(100vw_-_1.5rem))] h-[520px] max-h-[calc(100dvh_-_7.5rem)] flex flex-col bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden"
           >
-            <div className="bg-blue-900 p-4 flex items-center justify-between">
+            <div className="bg-blue-900 p-4 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-full bg-amber-500 flex items-center justify-center text-blue-900 font-bold text-sm">
                   A
@@ -317,7 +317,7 @@ export function Chatbot() {
               </button>
             </div>
 
-            <div className="h-[380px] overflow-y-auto p-4 space-y-3 bg-slate-50">
+            <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-3 bg-slate-50">
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
@@ -367,7 +367,7 @@ export function Chatbot() {
                     <button
                       key={reply}
                       onClick={() => handleSend(reply)}
-                      className="text-xs bg-white border border-slate-200 text-slate-600 rounded-full px-3.5 py-1.5 hover:border-blue-300 hover:text-blue-900 hover:bg-blue-50 transition-all duration-200 flex items-center gap-1"
+                      className="text-sm sm:text-xs bg-white border border-slate-200 text-slate-600 rounded-full px-3.5 py-2 sm:py-1.5 hover:border-blue-300 hover:text-blue-900 hover:bg-blue-50 transition-all duration-200 flex items-center gap-1"
                     >
                       {messages.length === 1 && (
                         <ChevronRight className="w-3 h-3 shrink-0" />
@@ -382,7 +382,7 @@ export function Chatbot() {
 
             <form
               onSubmit={handleSubmit}
-              className="border-t border-slate-200 p-3 flex items-center gap-2 bg-white"
+              className="border-t border-slate-200 p-3 flex items-center gap-2 bg-white shrink-0"
             >
               <input
                 ref={inputRef}
@@ -391,7 +391,7 @@ export function Chatbot() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={pendingQuestion ? t('chatbot.inputPlaceholderForm') : t('chatbot.inputPlaceholder')}
                 disabled={!!pendingQuestion}
-                className="flex-1 border border-slate-200 rounded-full px-4 py-2.5 text-sm outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all placeholder:text-slate-400 disabled:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex-1 border border-slate-200 rounded-full px-4 py-2.5 text-base sm:text-sm outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all placeholder:text-slate-400 disabled:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
               />
               <button
                 type="submit"

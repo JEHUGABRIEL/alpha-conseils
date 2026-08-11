@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Check,
-  Sparkles,
-  Rocket,
   Table,
   LayoutGrid,
   Minus,
@@ -14,8 +12,10 @@ import {
   Shield,
   Target,
   ArrowRight,
+  CheckCircle2,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { WEB3FORMS_KEY } from '../constants';
 
 interface PlanDetail {
   icon: React.ElementType;
@@ -34,6 +34,8 @@ interface Plan {
   details: PlanDetail[];
   forWho: string;
 }
+
+const sectionIconMap: React.ElementType[] = [Clock, FileText, Target, Shield, Users];
 
 const detailIconMap: Record<string, React.ElementType> = {
   'Documents fournis': FileText,
@@ -62,7 +64,194 @@ const detailIconMap: Record<string, React.ElementType> = {
   'Commitments': Shield,
 };
 
-function ComparisonTable({ plans, comparisonSections, t }: { plans: Plan[]; comparisonSections: any; t: any }) {
+function QuoteRequestModal({
+  plan,
+  onClose,
+  t,
+}: {
+  plan: Plan | null;
+  onClose: () => void;
+  t: any;
+}) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const nameInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    nameInputRef.current?.focus();
+    document.body.style.overflow = 'hidden';
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `[Alpha Conseil] Demande de devis - ${plan?.name || 'Général'}`,
+          name,
+          email,
+          phone,
+          message: `Demande de devis pour le pack : ${plan?.name || 'Non spécifié'}\n\nMessage du client :\n${message}`,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('pricing.quoteModal.title')}
+    >
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 20 }}
+        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl"
+      >
+        <div className="sticky top-0 z-10 bg-white border-b border-slate-100 px-6 sm:px-8 py-5 flex items-start justify-between">
+          <div>
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-serif">
+              {t('pricing.quoteModal.title')}
+            </h3>
+            {plan && (
+              <p className="text-sm text-blue-900 font-semibold mt-1">
+                {t('pricing.quoteModal.forPlan')} {plan.name}
+              </p>
+            )}
+          </div>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg p-2 transition-all" aria-label={t('pricing.quoteModal.close')}>
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        <div className="p-6 sm:p-8">
+          {status === 'success' ? (
+            <div className="text-center py-10">
+              <CheckCircle2 className="w-14 h-14 text-emerald-500 mx-auto mb-4" />
+              <h4 className="text-lg font-bold text-slate-900 mb-2">{t('pricing.quoteModal.successTitle')}</h4>
+              <p className="text-slate-600 text-sm mb-6">{t('pricing.quoteModal.successText')}</p>
+              <button
+                onClick={onClose}
+                className="px-6 py-2.5 rounded-lg text-sm font-semibold bg-blue-900 text-white hover:bg-blue-800 transition-colors"
+              >
+                {t('pricing.quoteModal.close')}
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label htmlFor="quoteName" className="block text-sm font-medium text-slate-700 mb-2">
+                  {t('pricing.quoteModal.name')}
+                </label>
+                <input
+                  ref={nameInputRef}
+                  type="text"
+                  id="quoteName"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-900 focus:border-blue-900 transition-colors"
+                  placeholder={t('pricing.quoteModal.namePlaceholder')}
+                />
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label htmlFor="quoteEmail" className="block text-sm font-medium text-slate-700 mb-2">
+                    {t('pricing.quoteModal.email')}
+                  </label>
+                  <input
+                    type="email"
+                    id="quoteEmail"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-900 focus:border-blue-900 transition-colors"
+                    placeholder={t('pricing.quoteModal.emailPlaceholder')}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="quotePhone" className="block text-sm font-medium text-slate-700 mb-2">
+                    {t('pricing.quoteModal.phone')}
+                  </label>
+                  <input
+                    type="tel"
+                    id="quotePhone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-900 focus:border-blue-900 transition-colors"
+                    placeholder={t('pricing.quoteModal.phonePlaceholder')}
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="quoteMessage" className="block text-sm font-medium text-slate-700 mb-2">
+                  {t('pricing.quoteModal.message')}
+                </label>
+                <textarea
+                  id="quoteMessage"
+                  rows={4}
+                  required
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-900 focus:border-blue-900 transition-colors resize-none"
+                  placeholder={t('pricing.quoteModal.messagePlaceholder')}
+                />
+              </div>
+              {status === 'error' && (
+                <p className="text-sm text-red-600">{t('pricing.quoteModal.error')}</p>
+              )}
+              <button
+                type="submit"
+                disabled={status === 'submitting'}
+                className="w-full flex justify-center items-center py-3.5 px-6 rounded-lg shadow-sm text-base font-semibold text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {status === 'submitting' ? t('pricing.quoteModal.sending') : t('pricing.quoteModal.submit')}
+              </button>
+              <p className="text-xs text-slate-400 text-center">{t('pricing.quoteModal.privacy')}</p>
+            </form>
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function ComparisonTable({ plans, comparisonSections, onRequestQuote, t }: { plans: Plan[]; comparisonSections: any; onRequestQuote: (plan: Plan) => void; t: any }) {
   return (
     <div className="max-w-6xl mx-auto overflow-x-auto">
       <table className="w-full border-collapse bg-white rounded-2xl shadow-sm overflow-hidden">
@@ -95,8 +284,14 @@ function ComparisonTable({ plans, comparisonSections, t }: { plans: Plan[]; comp
           {comparisonSections.map((section: any, si: number) => (
             <React.Fragment key={si}>
               <tr className="bg-slate-50">
-                <td colSpan={5} className="p-3 pl-5 text-sm font-bold text-slate-700">
-                  {section.category}
+                <td colSpan={5} className="p-3 pl-5">
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-slate-700">
+                    {(() => {
+                      const CategoryIcon = sectionIconMap[si % sectionIconMap.length];
+                      return <CategoryIcon className="w-4 h-4 text-blue-900" />;
+                    })()}
+                    {section.category}
+                  </span>
                 </td>
               </tr>
               {section.rows.map((row: any, ri: number) => (
@@ -121,9 +316,9 @@ function ComparisonTable({ plans, comparisonSections, t }: { plans: Plan[]; comp
             <td className="p-4 pl-5" />
             {plans.map((plan, i) => (
               <td key={i} className="p-4 text-center">
-                <a href="#contact" className={`inline-block w-full max-w-[140px] py-2.5 rounded-lg text-xs font-semibold transition-all duration-200 ${plan.badge === 'popular' ? 'bg-blue-900 text-white hover:bg-blue-800' : plan.badge === 'custom' ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-slate-100 text-blue-900 hover:bg-blue-900 hover:text-white'}`}>
+                <button onClick={() => onRequestQuote(plan)} className={`inline-block w-full max-w-[140px] py-2.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer ${plan.badge === 'popular' ? 'bg-blue-900 text-white hover:bg-blue-800' : plan.badge === 'custom' ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-slate-100 text-blue-900 hover:bg-blue-900 hover:text-white'}`}>
                   {t('pricing.cta')}
-                </a>
+                </button>
               </td>
             ))}
           </tr>
@@ -133,7 +328,7 @@ function ComparisonTable({ plans, comparisonSections, t }: { plans: Plan[]; comp
   );
 }
 
-function PlanModal({ plan, onClose, t }: { plan: Plan; onClose: () => void; t: any }) {
+function PlanModal({ plan, onClose, onRequestQuote, t }: { plan: Plan; onClose: () => void; onRequestQuote: (plan: Plan) => void; t: any }) {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -216,10 +411,10 @@ function PlanModal({ plan, onClose, t }: { plan: Plan; onClose: () => void; t: a
             );
           })}
           <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100">
-            <a href="#contact" onClick={onClose} className={`flex-1 text-center py-3 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 ${plan.badge === 'popular' ? 'bg-blue-900 text-white hover:bg-blue-800 shadow-md' : plan.badge === 'custom' ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-md' : 'bg-blue-900 text-white hover:bg-blue-800'}`}>
+            <button onClick={() => onRequestQuote(plan)} className={`flex-1 text-center py-3 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer ${plan.badge === 'popular' ? 'bg-blue-900 text-white hover:bg-blue-800 shadow-md' : plan.badge === 'custom' ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-md' : 'bg-blue-900 text-white hover:bg-blue-800'}`}>
               {t('pricing.modal.requestQuote')}
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
             <button onClick={onClose} className="px-6 py-3 rounded-lg text-sm font-medium text-slate-500 hover:text-slate-700 hover:bg-slate-50 transition-all">
               {t('pricing.modal.close')}
             </button>
@@ -271,9 +466,15 @@ export function Pricing() {
 
   const [view, setView] = useState<'cards' | 'compare'>('cards');
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
+  const [quotePlan, setQuotePlan] = useState<Plan | null>(null);
+
+  const handleRequestQuote = (plan: Plan) => {
+    setSelectedPlan(null);
+    setQuotePlan(plan);
+  };
 
   return (
-    <section id="tarifs" className="py-24 bg-slate-50 overflow-hidden">
+    <section id="tarifs" className="pt-16 pb-24 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -330,14 +531,12 @@ export function Pricing() {
                     }`}
                   >
                     {plan.badge === 'popular' && (
-                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 bg-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg z-10">
-                        <Sparkles className="w-3.5 h-3.5" />
+                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center bg-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg z-10">
                         {t('pricing.badgeLabels.popular').toUpperCase()}
                       </div>
                     )}
                     {plan.badge === 'custom' && (
-                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 bg-emerald-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg z-10">
-                        <Rocket className="w-3.5 h-3.5" />
+                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center bg-emerald-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg z-10">
                         {t('pricing.badgeLabels.custom').toUpperCase()}
                       </div>
                     )}
@@ -367,9 +566,9 @@ export function Pricing() {
                     <button onClick={() => setSelectedPlan(plan)} className="w-full text-center py-2.5 rounded-lg font-medium text-xs transition-all duration-200 mb-2 border border-slate-200 text-slate-600 hover:border-blue-300 hover:text-blue-900 hover:bg-blue-50">
                       {t('pricing.modal.viewDetails')}
                     </button>
-                    <a href="#contact" className={`w-full text-center py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${plan.badge === 'popular' ? 'bg-blue-900 text-white hover:bg-blue-800 shadow-md' : plan.badge === 'custom' ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-md' : 'bg-slate-100 text-blue-900 hover:bg-blue-900 hover:text-white'}`}>
+                    <button onClick={() => handleRequestQuote(plan)} className={`w-full text-center py-3 rounded-lg font-semibold text-sm transition-all duration-200 cursor-pointer ${plan.badge === 'popular' ? 'bg-blue-900 text-white hover:bg-blue-800 shadow-md' : plan.badge === 'custom' ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-md' : 'bg-slate-100 text-blue-900 hover:bg-blue-900 hover:text-white'}`}>
                       {t('pricing.cta')}
-                    </a>
+                    </button>
                   </motion.div>
                 ))}
               </div>
@@ -383,7 +582,7 @@ export function Pricing() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
             >
-              <ComparisonTable plans={plans} comparisonSections={comparisonSections} t={t} />
+              <ComparisonTable plans={plans} comparisonSections={comparisonSections} onRequestQuote={handleRequestQuote} t={t} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -404,8 +603,9 @@ export function Pricing() {
           </p>
         </motion.div>
       </div>
-      <AnimatePresence>
-        {selectedPlan && <PlanModal plan={selectedPlan} onClose={() => setSelectedPlan(null)} t={t} />}
+      <AnimatePresence mode="wait">
+        {selectedPlan && <PlanModal plan={selectedPlan} onClose={() => setSelectedPlan(null)} onRequestQuote={handleRequestQuote} t={t} />}
+        {quotePlan && <QuoteRequestModal plan={quotePlan} onClose={() => setQuotePlan(null)} t={t} />}
       </AnimatePresence>
     </section>
   );
