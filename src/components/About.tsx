@@ -83,12 +83,12 @@ export function About() {
                 ))}
               </div>
 
-              {/* Badge d'expérience */}
-              <div className="absolute -bottom-6 -right-6 bg-blue-900 text-white p-8 rounded-2xl shadow-xl hidden md:block z-10">
-                <div className="text-4xl font-bold font-serif mb-1 text-amber-500">
+              {/* Badge d'expérience — visible sur mobile (dans le coin de l'image) et en débord sur desktop */}
+              <div className="absolute right-4 bottom-16 md:-right-6 md:-bottom-6 bg-blue-900 text-white p-6 md:p-8 rounded-2xl shadow-xl z-10">
+                <div className="text-3xl md:text-4xl font-bold font-serif mb-1 text-amber-500">
                   10+
                 </div>
-                <div className="text-sm font-medium">
+                <div className="text-xs md:text-sm font-medium">
                   {t('about.experience.label')}
                   <br />
                   {t('about.experience.extra')}
