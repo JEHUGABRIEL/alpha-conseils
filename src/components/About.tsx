@@ -52,7 +52,7 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:w-1/2"
+            className="w-full lg:w-1/2"
           >
             <div className="relative">
               {/* Image du carousel (chargement direct, sans animation JS — 100% fiable) */}
@@ -102,7 +102,7 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:w-1/2"
+            className="w-full lg:w-1/2"
           >
             <h2 className="text-blue-900 font-semibold tracking-wide uppercase text-sm mb-3">
               {t('about.badge')}
