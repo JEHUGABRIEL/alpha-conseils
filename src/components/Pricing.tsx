@@ -481,7 +481,7 @@ export function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-10"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="text-blue-900 font-semibold tracking-wide uppercase text-sm mb-3">
             {t('pricing.badge')}
