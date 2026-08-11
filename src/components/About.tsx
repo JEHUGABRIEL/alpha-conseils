@@ -5,15 +5,15 @@ import { useTranslation } from 'react-i18next';
 
 const aboutImages = [
   {
-    src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80',
+    src: '/images/about-1.jpg',
     alt: 'Équipe en réunion',
   },
   {
-    src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80',
+    src: '/images/about-2.jpg',
     alt: 'Collaboration en équipe',
   },
   {
-    src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80',
+    src: '/images/about-3.jpg',
     alt: 'Consultation professionnelle',
   },
 ];
@@ -22,30 +22,8 @@ export function About() {
   const { t } = useTranslation();
   const benefits = t('about.benefits', { returnObjects: true }) as string[];
   const [currentImage, setCurrentImage] = useState(0);
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(() => new Set());
-  const [failedImages, setFailedImages] = useState<Set<number>>(() => new Set());
+  const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const isCurrentImageLoaded = loadedImages.has(currentImage);
-  const isCurrentImageFailed = failedImages.has(currentImage);
-
-  const handleImageLoad = () => {
-    setLoadedImages((prev) => {
-      if (prev.has(currentImage)) return prev;
-      const next = new Set(prev);
-      next.add(currentImage);
-      return next;
-    });
-  };
-
-  const handleImageError = () => {
-    setFailedImages((prev) => {
-      if (prev.has(currentImage)) return prev;
-      const next = new Set(prev);
-      next.add(currentImage);
-      return next;
-    });
-  };
 
   const startTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -80,24 +58,19 @@ export function About() {
             <div className="relative">
               {/* Images en crossfade */}
               <div className="relative h-[500px] w-full overflow-hidden rounded-2xl bg-slate-200">
-                {/* Shimmer : visible tant que l'image courante n'est pas chargée (masqué aussi en cas d'échec) */}
-                <motion.div
-                  initial={false}
-                  animate={{ opacity: isCurrentImageLoaded || isCurrentImageFailed ? 0 : 1 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0 z-[5] pointer-events-none shimmer"
-                  aria-hidden="true"
-                />
+                {/* Shimmer : visible uniquement pendant le chargement initial (masqué après le 1er chargement) */}
+                {!hasLoadedOnce && (
+                  <div className="absolute inset-0 pointer-events-none shimmer" aria-hidden="true" />
+                )}
 
                 <AnimatePresence>
                   <motion.img
                     key={currentImage}
                     src={aboutImages[currentImage].src}
                     alt={aboutImages[currentImage].alt}
-                    onLoad={handleImageLoad}
-                    onError={handleImageError}
+                    onLoad={() => setHasLoadedOnce(true)}
                     initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: isCurrentImageLoaded ? 1 : 0, scale: 1 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.8, ease: 'easeInOut' }}
                     className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl"
